@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="color-scheme" content="light only"/>
+<title>About Bizpinions — Answers in 60 seconds</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#00274C;--maize:#FFCB05;--cream:#F8F4EE;--cream2:#F2EDE4;--white:#FFFFFF;--text:#1a1a14;--text2:#3d3825;--text3:#7a7060;--border:#E2DDD4;--green:#1A6B3C;}
+html{background:#ffffff !important;color-scheme:light only;}
+body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}.nav-logo span{color:var(--maize);}
+.nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.pill-icon{font-size:13px;line-height:1;}.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.hero{background:var(--navy);padding:32px 20px 28px;}
+.hero-eye{display:inline-block;background:var(--maize);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:14px;}
+.hero h1{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 em{color:var(--maize);font-style:italic;}
+.hero p{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;}
+.body{padding:28px 20px;}
+.body h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.body p{font-size:15px;color:var(--text);line-height:1.82;margin-bottom:16px;}
+.body p strong{color:var(--navy);}
+.callout{background:var(--cream);border-left:4px solid var(--maize);border-radius:0 8px 8px 0;padding:16px;margin:20px 0;}
+.callout p{font-size:14px;font-style:italic;color:var(--text2);line-height:1.7;margin:0;}
+.principle-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;}
+.pc-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--maize);line-height:1;margin-bottom:6px;}
+.pc-title{font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.pc-desc{font-size:13px;color:var(--text2);line-height:1.65;}
+.team-card{background:var(--cream);border-radius:10px;padding:20px;margin-bottom:12px;}
+.tc-name{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.tc-title{font-size:12px;font-weight:600;color:var(--maize);background:var(--navy);display:inline-block;padding:2px 10px;border-radius:3px;margin-bottom:10px;letter-spacing:1px;text-transform:uppercase;font-size:9px;}
+.tc-bio{font-size:13px;color:var(--text2);line-height:1.7;}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0;}
+.stat-box{background:var(--navy);border-radius:8px;padding:16px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--maize);line-height:1;}
+.stat-label{font-size:10px;color:rgba(255,255,255,0.55);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;}
+.newsletter{background:var(--navy);padding:28px 20px;}
+.newsletter h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.newsletter p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:18px;}
+.newsletter p strong{color:var(--maize);}
+.nl-form{display:flex;flex-direction:column;gap:8px;}
+.nl-input{padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.07);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;}
+.nl-input::placeholder{color:rgba(255,255,255,0.28);}
+.nl-btn{background:var(--maize);color:var(--navy);font-size:15px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.nl-fine{font-size:10px;color:rgba(255,255,255,0.22);text-align:center;margin-top:6px;}
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+
+<div class="hero">
+  <div class="hero-eye">About Bizpinions</div>
+  <h1>Real opinions.<br><em>No fluff. Ever.</em></h1>
+  <p>We built Bizpinions because every other review site makes you read 3,000 words before telling you what they actually think. We tell you in the first sentence.</p>
+</div>
+
+<div class="body">
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num">120</div><div class="stat-label">Guides published</div></div>
+    <div class="stat-box"><div class="stat-num">60s</div><div class="stat-label">To your answer</div></div>
+    <div class="stat-box"><div class="stat-num">Zero</div><div class="stat-label">Buried verdicts</div></div>
+  </div>
+
+  <h2>Why we built this</h2>
+  <p>The internet is full of review sites that bury the answer at the bottom of a 3,000-word article. They do it deliberately — more words means more ad impressions, more time on page, more clicks. The reader suffers so the site can make an extra dollar.</p>
+  <p><strong>We built Bizpinions on a different principle:</strong> give you the answer in the first paragraph. If you want the proof, it's right below. But you shouldn't have to wade through 2,000 words of context-setting to find out what we actually think.</p>
+
+  <div class="callout">
+    <p>"The answer is always in the first paragraph. We tell you what we think before we tell you why. That's the whole model."</p>
+  </div>
+
+  <h2>Our editorial principles</h2>
+  <div class="principle-card"><div class="pc-num">01</div><div class="pc-title">Verdict first. Always.</div><div class="pc-desc">Every article, review, and guide leads with the answer. No preamble, no burying the lede, no making you scroll to find out what we think.</div></div>
+  <div class="principle-card"><div class="pc-num">02</div><div class="pc-title">Honest limitations included.</div><div class="pc-desc">Every review includes what doesn't work, who it's wrong for, and what you should use instead. A review with no cons is an ad, not a review.</div></div>
+  <div class="principle-card"><div class="pc-num">03</div><div class="pc-title">Affiliate links are disclosed.</div><div class="pc-desc">We earn commissions when you buy through our links. This is disclosed on every single page. Our opinions are never influenced by who pays us — if a product is bad, we say it's bad.</div></div>
+  <div class="principle-card"><div class="pc-num">04</div><div class="pc-title">Sponsored placements are labeled.</div><div class="pc-desc">Companies can pay to be reviewed and featured on Bizpinions. When they do, it's clearly labeled as a sponsored placement. The scores and verdicts are ours, not theirs.</div></div>
+  <div class="principle-card"><div class="pc-num">05</div><div class="pc-title">We cover every stage.</div><div class="pc-desc">Start it, Fund it, Run it, Buy it, Sell it. Every stage of a business journey has its own section. We cover the whole lifecycle — not just the flashy startup stuff.</div></div>
+
+  <h2>How we make money</h2>
+  <p>Bizpinions makes money in four ways, all disclosed:</p>
+  <p><strong>Affiliate commissions</strong> — when you click a link and buy software or a service, we earn a commission. Disclosed on every page.</p>
+  <p><strong>Sponsored placements</strong> — companies pay to have their product reviewed and featured. Labeled as sponsored on every review.</p>
+  <p><strong>Newsletter sponsorships</strong> — one sponsor per weekly email issue. Always labeled.</p>
+  <p><strong>Google AdSense</strong> — display ads on some pages. Standard stuff.</p>
+
+  <h2>Who runs Bizpinions</h2>
+  <div class="team-card">
+    <div class="tc-name">Bizpinions Editorial</div>
+    <div class="tc-title">Editorial team</div>
+    <div class="tc-bio">Bizpinions is run by a small team of writers, researchers, and editors who have operated real businesses. Every guide is written by someone who has done it, reviewed by someone who knows the subject, and checked against current data before publish.</div>
+  </div>
+</div>
+
+<div class="newsletter">
+  <h2>The Bizpinions newsletter</h2>
+  <p>One email per week. <strong>New reviews, funding tips, software comparisons, and franchise opportunities</strong> — for business owners at every stage. Free forever.</p>
+  <div class="nl-form"><input class="nl-input" type="email" placeholder="Your email address"/><button class="nl-btn">Subscribe free →</button></div>
+  <div class="nl-fine">No spam · Unsubscribe anytime · Free forever</div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

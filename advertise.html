@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="color-scheme" content="light only"/>
+<title>Advertise on Bizpinions — Reach Small Business Decision Makers</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#00274C;--maize:#FFCB05;--cream:#F8F4EE;--cream2:#F2EDE4;--white:#FFFFFF;--text:#1a1a14;--text2:#3d3825;--text3:#7a7060;--border:#E2DDD4;--green:#1A6B3C;--amber:#C17A10;}
+html{background:#ffffff !important;color-scheme:light only;}
+body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}.nav-logo span{color:var(--maize);}
+.nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.pill-icon{font-size:13px;line-height:1;}.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.hero{background:var(--navy);padding:32px 20px 28px;}
+.hero-eye{display:inline-block;background:var(--maize);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:14px;}
+.hero h1{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 em{color:var(--maize);font-style:italic;}
+.hero p{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;}
+.body{padding:28px 20px;}
+.body h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.body p{font-size:15px;color:var(--text);line-height:1.82;margin-bottom:16px;}
+.body p strong{color:var(--navy);}
+.audience-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;}
+.astat{background:var(--navy);border-radius:10px;padding:16px;text-align:center;}
+.astat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--maize);line-height:1;}
+.astat-label{font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;}
+.option-card{background:var(--white);border:2px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px;}
+.option-card.featured{border-color:var(--navy);}
+.oc-badge{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:3px;margin-bottom:10px;}
+.oc-badge.popular{background:var(--navy);color:var(--maize);}
+.oc-badge.standard{background:var(--cream);color:var(--text3);}
+.oc-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.oc-price{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--navy);line-height:1;margin-bottom:8px;}
+.oc-price span{font-size:14px;font-family:'Inter',sans-serif;color:var(--text3);font-weight:400;}
+.oc-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:14px;}
+.oc-features{list-style:none;}
+.oc-features li{font-size:13px;color:var(--text2);line-height:1.6;padding:3px 0 3px 16px;position:relative;}
+.oc-features li::before{content:'✓';position:absolute;left:0;color:var(--green);font-size:11px;font-weight:700;}
+.oc-cta{width:100%;background:var(--navy);color:var(--white);font-size:14px;font-weight:700;padding:12px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;margin-top:14px;}
+.option-card.featured .oc-cta{background:var(--maize);color:var(--navy);}
+.who-advertises{background:var(--cream);border-radius:10px;padding:16px;margin:20px 0;}
+.wa-head{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.wa-item{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.wa-icon{font-size:18px;flex-shrink:0;}
+.wa-text{font-size:13px;color:var(--text2);line-height:1.5;}
+.contact-cta{background:var(--navy);border-radius:10px;padding:20px;margin-top:20px;text-align:center;}
+.contact-cta h3{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.contact-cta p{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:16px;line-height:1.65;}
+.contact-cta a{display:inline-block;background:var(--maize);color:var(--navy);font-size:14px;font-weight:700;padding:12px 24px;border-radius:8px;text-decoration:none;}
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="hero">
+  <div class="hero-eye">Advertise</div>
+  <h1>Reach small business owners<br><em>at the moment they buy.</em></h1>
+  <p>Every visitor on Bizpinions searched for something about running, funding, buying, or selling a business. They're not browsing — they're deciding. That's your audience.</p>
+</div>
+<div class="body">
+  <h2>The audience</h2>
+  <p>Every single visitor on Bizpinions self-selected by searching for something business-related. They are actively researching software, loans, franchises, or vendors. <strong>This is the highest commercial intent audience you can reach.</strong></p>
+  <div class="audience-stats">
+    <div class="astat"><div class="astat-num">120</div><div class="astat-label">Articles published</div></div>
+    <div class="astat"><div class="astat-num">100%</div><div class="astat-label">Business owners</div></div>
+    <div class="astat"><div class="astat-num">5</div><div class="astat-label">Buying stages</div></div>
+    <div class="astat"><div class="astat-num">High</div><div class="astat-label">Purchase intent</div></div>
+  </div>
+
+  <h2>Advertising options</h2>
+  <div class="option-card featured">
+    <span class="oc-badge popular">Most popular</span>
+    <div class="oc-title">Sponsored placement review</div>
+    <div class="oc-price">Custom <span>pricing</span></div>
+    <div class="oc-desc">Your product reviewed and featured in The Verdict. Sponsored placement label included. Our scores and verdicts are ours — not influenced by the placement fee.</div>
+    <ul class="oc-features">
+      <li>Dedicated review page on Bizpinions</li>
+      <li>Featured in The Verdict hub</li>
+      <li>Included in relevant category searches</li>
+      <li>Newsletter mention to our full list</li>
+      <li>Affiliate links embedded — you pay twice, you earn twice</li>
+      <li>Permanent placement — not time-limited</li>
+    </ul>
+    <button class="oc-cta">Get a placement quote →</button>
+  </div>
+  <div class="option-card">
+    <span class="oc-badge standard">Standard</span>
+    <div class="oc-title">Newsletter sponsorship</div>
+    <div class="oc-price">Custom <span>per issue</span></div>
+    <div class="oc-desc">One sponsor slot per weekly newsletter issue. Featured prominently, clearly labeled as sponsored. Sent to our full subscriber list of engaged business owners.</div>
+    <ul class="oc-features">
+      <li>Full subscriber list reach</li>
+      <li>Prominent placement in issue</li>
+      <li>Your copy, our format</li>
+      <li>Clearly labeled as sponsored</li>
+    </ul>
+    <button class="oc-cta" style="background:var(--navy);">Get newsletter rates →</button>
+  </div>
+  <div class="option-card">
+    <span class="oc-badge standard">Standard</span>
+    <div class="oc-title">Display advertising</div>
+    <div class="oc-price">CPM <span>based</span></div>
+    <div class="oc-desc">Display ad placements across relevant article pages. Best for broad awareness to our business owner audience.</div>
+    <ul class="oc-features">
+      <li>Targeted to relevant content pillars</li>
+      <li>Mobile-first placements</li>
+      <li>Monthly reporting</li>
+    </ul>
+    <button class="oc-cta" style="background:var(--navy);">Get display rates →</button>
+  </div>
+
+  <h2>Who advertises on Bizpinions</h2>
+  <div class="who-advertises">
+    <div class="wa-head">Ideal advertisers</div>
+    <div class="wa-item"><span class="wa-icon">💻</span><div class="wa-text"><strong>SaaS companies</strong> — CRM, payroll, accounting, HR, and any software used by small business operators.</div></div>
+    <div class="wa-item"><span class="wa-icon">🏦</span><div class="wa-text"><strong>Lenders and financial services</strong> — SBA lenders, equipment financers, factoring companies, credit providers.</div></div>
+    <div class="wa-item"><span class="wa-icon">🏪</span><div class="wa-text"><strong>Franchise systems</strong> — Any franchise looking to attract qualified, research-ready prospects.</div></div>
+    <div class="wa-item"><span class="wa-icon">⚖️</span><div class="wa-text"><strong>Professional services</strong> — Accountants, lawyers, business brokers, exit advisors, consultants.</div></div>
+    <div class="wa-item"><span class="wa-icon">📦</span><div class="wa-text"><strong>Business service providers</strong> — Insurance, payroll bureaus, HR services, marketing agencies.</div></div>
+  </div>
+
+  <div class="contact-cta">
+    <h3>Ready to reach small business buyers?</h3>
+    <p>Contact us to discuss placement options, pricing, and availability. We respond within 1 business day.</p>
+    <a href="/contact">Get in touch →</a>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

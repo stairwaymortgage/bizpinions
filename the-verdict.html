@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="color-scheme" content="light only">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Verdict — Bizpinions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#00274C;
+  --maize:#FFCB05;
+  --cream:#F8F4EE;
+  --cream2:#F2EDE4;
+  --white:#FFFFFF;
+  --text:#1a1a14;
+  --text2:#3d3825;
+  --text3:#7a7060;
+  --border:#E2DDD4;
+  --green:#1A6B3C;
+  --amber:#C17A10;
+  --red:#A0291A;
+  --purple:#7B3FA0;
+  --blue:#1B5E9E;
+}
+html{background:#ffffff !important;color-scheme:light only;} body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+
+/* ══ NAV ══ */
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}
+.nav-brand .nav-logo span{color:var(--maize);}
+.nav-brand .nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;white-space:nowrap;}
+
+/* ══ STAGE STRIP ══ */
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;transition:all .15s;}
+.stage-pill.active{background:var(--maize);border-color:var(--maize);}
+.pill-icon{font-size:13px;line-height:1;}
+.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.stage-pill.active .pill-text{color:var(--navy);}
+
+/* ══ VERDICT HERO ══ */
+.verdict-hero{background:var(--navy);padding:28px 16px 24px;position:relative;overflow:hidden;}
+.verdict-hero::after{content:'⚖️';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:120px;opacity:0.06;line-height:1;}
+.vh-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--maize);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:4px;margin-bottom:14px;}
+.vh-title{font-family:'Lora',serif;font-size:30px;font-weight:700;color:var(--white);line-height:1.12;margin-bottom:8px;}
+.vh-title em{color:var(--maize);font-style:italic;}
+.vh-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:20px;}
+.vh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.12);border-radius:10px;overflow:hidden;margin-bottom:20px;}
+.vh-stat{padding:12px 8px;text-align:center;background:rgba(255,255,255,0.05);}
+.vh-stat+.vh-stat{border-left:1px solid rgba(255,255,255,0.1);}
+.vh-stat-num{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--maize);line-height:1;}
+.vh-stat-label{font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px;}
+
+/* ══ SEARCH BAR ══ */
+.search-wrap{background:var(--navy);padding:0 16px 20px;}
+.search-bar{display:flex;gap:8px;}
+.search-input{flex:1;padding:13px 16px;border-radius:8px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;transition:border-color .15s;}
+.search-input:focus{outline:none;border-color:var(--maize);}
+.search-input::placeholder{color:rgba(255,255,255,0.3);}
+.search-btn{background:var(--maize);color:var(--navy);font-size:14px;font-weight:700;padding:13px 18px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;}
+
+/* ══ CATEGORY FILTER PILLS ══ */
+.filter-wrap{background:var(--white);border-bottom:2px solid var(--border);padding:12px 16px;}
+.filter-label{font-size:9px;font-weight:700;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.filter-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.filter-pills::-webkit-scrollbar{display:none;}
+.fpill{display:flex;align-items:center;gap:5px;background:var(--cream);border:1.5px solid var(--border);border-radius:20px;padding:7px 14px;white-space:nowrap;cursor:pointer;flex-shrink:0;font-family:'Inter',sans-serif;transition:all .15s;}
+.fpill.active{border-color:var(--navy);}
+.fpill-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.fpill-text{font-size:12px;font-weight:600;color:var(--text2);}
+.fpill.active .fpill-text{color:var(--navy);font-weight:700;}
+.fpill.all.active{background:var(--navy);border-color:var(--navy);}
+.fpill.all.active .fpill-text{color:var(--white);}
+
+/* Category colors */
+.dot-software{background:#1B5E9E;}
+.dot-franchise{background:#C17A10;}
+.dot-lender{background:#1A6B3C;}
+.dot-comparison{background:#7B3FA0;}
+.dot-bestof{background:#00274C;}
+.dot-warning{background:#A0291A;}
+
+/* ══ RESULTS BAR ══ */
+.results-bar{background:var(--cream);padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.results-count{font-size:12px;color:var(--text3);}
+.results-count strong{color:var(--navy);font-weight:600;}
+
+/* ══ FEATURED REVIEW ══ */
+.featured-wrap{padding:16px;}
+.featured-label{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.featured-card{background:var(--cream);border:2px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;}
+.featured-card-top{background:var(--navy);padding:20px 16px;position:relative;overflow:hidden;}
+.featured-card-top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--maize);}
+.fc-cat{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:3px;margin-bottom:10px;}
+.fc-cat.software{background:rgba(27,94,158,0.3);color:#7ab8f5;}
+.fc-cat.franchise{background:rgba(193,122,16,0.3);color:#f5c97a;}
+.fc-cat.comparison{background:rgba(123,63,160,0.3);color:#d4a8f5;}
+.fc-cat.warning{background:rgba(160,41,26,0.3);color:#f5a8a0;}
+.fc-cat.lender{background:rgba(26,107,60,0.3);color:#7af5a8;}
+.fc-cat.bestof{background:rgba(255,203,5,0.2);color:#FFCB05;}
+.fc-title{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:8px;}
+.fc-meta{font-size:11px;color:rgba(255,255,255,0.4);}
+.featured-card-body{padding:16px;}
+.fc-answer-label{font-size:9px;font-weight:700;color:var(--amber);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.fc-answer{font-size:14px;color:var(--text);line-height:1.72;font-weight:500;margin-bottom:14px;border-left:4px solid var(--maize);padding-left:12px;}
+.fc-scores{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.fc-score{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;}
+.fc-score-num{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;}
+.fc-score-label{font-size:9px;color:var(--text3);margin-top:2px;text-transform:uppercase;}
+.fc-verdict{background:var(--navy);border-radius:8px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;}
+.fc-verdict-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.fc-verdict-result{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--maize);}
+
+/* ══ REVIEW GRID ══ */
+.reviews-wrap{padding:0 16px 24px;}
+.reviews-section-label{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin:20px 0 12px;display:flex;align-items:center;gap:8px;}
+.reviews-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.review-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px;cursor:pointer;transition:box-shadow .15s,transform .15s;}
+.review-card:hover{box-shadow:0 4px 16px rgba(0,39,76,0.08);transform:translateY(-1px);}
+.rc-top{padding:14px 14px 10px;border-bottom:1px solid var(--border);}
+.rc-badges{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap;}
+.rc-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;padding:3px 8px;border-radius:3px;}
+.rc-badge.software{background:#EBF3FB;color:#1B5E9E;}
+.rc-badge.franchise{background:#FDF6E7;color:#C17A10;}
+.rc-badge.lender{background:#EBF7F1;color:#1A6B3C;}
+.rc-badge.comparison{background:#F5EEF8;color:#7B3FA0;}
+.rc-badge.bestof{background:#EEF2F8;color:#00274C;}
+.rc-badge.warning{background:#FCECEA;color:#A0291A;}
+.rc-new{font-size:9px;font-weight:700;color:var(--green);background:#E8F5ED;padding:2px 8px;border-radius:3px;}
+.rc-title{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:6px;}
+.rc-answer{font-size:12px;color:var(--text2);line-height:1.6;border-left:3px solid var(--maize);padding-left:8px;margin-bottom:6px;}
+.rc-meta{font-size:10px;color:var(--text3);}
+.rc-scores{padding:10px 14px;background:var(--cream);display:flex;}
+.rc-score{flex:1;text-align:center;}
+.rc-score+.rc-score{border-left:1px solid var(--border);}
+.rc-score-num{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--navy);line-height:1;}
+.rc-score-label{font-size:9px;color:var(--text3);margin-top:1px;text-transform:uppercase;}
+.rc-bottom{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;}
+.verdict-pill{font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;}
+.verdict-pill.recommended{background:#E8F5ED;color:#1A6B3C;}
+.verdict-pill.caution{background:#FDF6E7;color:#C17A10;}
+.verdict-pill.avoid{background:#FCECEA;color:#A0291A;}
+.verdict-pill.sponsored{background:#EEF2F8;color:#00274C;}
+.rc-cta{font-size:11px;font-weight:700;color:var(--navy);}
+
+/* HIDDEN cards for filter */
+.review-card.hidden{display:none;}
+
+/* ══ LOAD MORE ══ */
+.load-more{width:100%;padding:14px;background:var(--cream);border:1.5px solid var(--border);border-radius:8px;color:var(--navy);font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-top:4px;}
+
+/* ══ SUBMIT A REVIEW CTA ══ */
+.submit-cta{background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px;margin:0 16px 16px;text-align:center;}
+.submit-cta h3{font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.submit-cta p{font-size:12px;color:var(--text2);line-height:1.65;margin-bottom:12px;}
+.submit-btn{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:11px 20px;border-radius:6px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+
+/* ══ BBC ══ */
+.bbc{background:var(--cream);border-top:1px solid var(--border);padding:24px 16px;}
+.bbc h2{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.bbc>p{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:16px;}
+.bbc-box{background:var(--navy);border-radius:10px;padding:20px 16px;}
+.bbc-eye{font-size:9px;font-weight:700;color:rgba(255,203,5,0.65);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.bbc-box h3{font-family:'Lora',serif;font-size:16px;color:var(--white);margin-bottom:7px;line-height:1.3;}
+.bbc-box p{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:14px;line-height:1.6;}
+.bbc-btn{width:100%;background:var(--maize);color:var(--navy);font-size:14px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+
+/* ══ NEWSLETTER ══ */
+.newsletter{background:var(--navy);padding:28px 16px;}
+.newsletter h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.3;}
+.newsletter p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:18px;}
+.newsletter p strong{color:var(--maize);}
+.nl-form{display:flex;flex-direction:column;gap:8px;}
+.nl-input{padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.07);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;}
+.nl-input::placeholder{color:rgba(255,255,255,0.28);}
+.nl-btn{background:var(--maize);color:var(--navy);font-size:15px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.nl-fine{font-size:10px;color:rgba(255,255,255,0.22);text-align:center;margin-top:6px;}
+
+/* ══ FOOTER ══ */
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}
+.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-desc{font-size:12px;color:var(--text3);line-height:1.7;margin-bottom:20px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+
+/* Desktop */
+@media(min-width:768px){
+  .nav{padding:0 40px;height:64px;}
+  .nav-logo{font-size:32px;}
+  .stage-strip{top:64px;padding:12px 40px 14px;}
+  .verdict-hero{padding:48px 40px 40px;}
+  .vh-title{font-size:42px;}
+  .search-wrap{padding:0 40px 28px;}
+  .filter-wrap{padding:14px 40px;}
+  .results-bar{padding:12px 40px;}
+  .featured-wrap{padding:24px 40px;}
+  .reviews-wrap{padding:0 40px 40px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
+  .reviews-section-label{grid-column:1/-1;}
+  .load-more{grid-column:1/-1;}
+  .submit-cta{margin:0 40px 24px;}
+  .bbc{padding:40px;}
+  .newsletter{padding:48px 40px;}
+  .newsletter .nl-form{flex-direction:row;}
+  .nl-input{flex:1;}
+  .nl-btn{width:auto;white-space:nowrap;}
+  footer{padding:48px 40px 28px;}
+}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="nav-placeholder"></div>
+
+
+<!-- VERDICT HERO -->
+<div class="verdict-hero">
+  <div class="vh-eyebrow">⚖️ The Verdict</div>
+  <div class="vh-title">We tell you what we think.<br><em>Before we tell you why.</em></div>
+  <p class="vh-desc">Honest reviews of business software, vendors, franchises, and lenders. The answer is always in the first paragraph. Affiliate links disclosed on every review.</p>
+  <div class="vh-stats">
+    <div class="vh-stat"><div class="vh-stat-num">40+</div><div class="vh-stat-label">Reviews</div></div>
+    <div class="vh-stat"><div class="vh-stat-num">60s</div><div class="vh-stat-label">To answer</div></div>
+    <div class="vh-stat"><div class="vh-stat-num">Zero</div><div class="vh-stat-label">Hidden bias</div></div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-bar">
+    <input class="search-input" id="searchInput" type="text" placeholder="Search: Gusto, HubSpot, Chick-fil-A, SBA lenders..." oninput="filterReviews()"/>
+    <button class="search-btn">Search</button>
+  </div>
+</div>
+
+<!-- CATEGORY FILTERS -->
+<div class="filter-wrap">
+  <div class="filter-label">Filter by category</div>
+  <div class="filter-pills">
+    <div class="fpill all active" onclick="filterCat('all',this)">
+      <span class="fpill-text">All reviews</span>
+    </div>
+    <div class="fpill" onclick="filterCat('software',this)">
+      <span class="fpill-dot dot-software"></span>
+      <span class="fpill-text">Software</span>
+    </div>
+    <div class="fpill" onclick="filterCat('franchise',this)">
+      <span class="fpill-dot dot-franchise"></span>
+      <span class="fpill-text">Franchise</span>
+    </div>
+    <div class="fpill" onclick="filterCat('lender',this)">
+      <span class="fpill-dot dot-lender"></span>
+      <span class="fpill-text">Lenders</span>
+    </div>
+    <div class="fpill" onclick="filterCat('comparison',this)">
+      <span class="fpill-dot dot-comparison"></span>
+      <span class="fpill-text">Comparisons</span>
+    </div>
+    <div class="fpill" onclick="filterCat('bestof',this)">
+      <span class="fpill-dot dot-bestof"></span>
+      <span class="fpill-text">Best of</span>
+    </div>
+    <div class="fpill" onclick="filterCat('warning',this)">
+      <span class="fpill-dot dot-warning"></span>
+      <span class="fpill-text">Warning ⚠️</span>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS COUNT -->
+<div class="results-bar">
+  <span class="results-count">Showing <strong id="resultCount">40</strong> reviews</span>
+</div>
+
+<!-- FEATURED REVIEW -->
+<div class="featured-wrap">
+  <div class="featured-label">Featured review</div>
+  <div class="featured-card" data-cat="comparison">
+    <div class="featured-card-top">
+      <span class="fc-cat comparison">Comparison</span>
+      <div class="fc-title">HubSpot vs Salesforce: which CRM actually wins for small business in 2026?</div>
+      <div class="fc-meta">12 min read · Updated March 2026 · Sponsored placement</div>
+    </div>
+    <div class="featured-card-body">
+      <div class="fc-answer-label">⚡ 60-second answer</div>
+      <p class="fc-answer"><strong>HubSpot wins for most small businesses under 50 employees.</strong> Salesforce is more powerful but overbuilt, overpriced, and requires a consultant to set up properly. HubSpot's free tier alone beats Salesforce's paid entry tier for everyday use. Only go Salesforce if you're planning to scale past 100 people and need enterprise-grade reporting.</p>
+      <div class="fc-scores">
+        <div class="fc-score"><div class="fc-score-num" style="color:#1B5E9E;">9.1</div><div class="fc-score-label">HubSpot</div></div>
+        <div class="fc-score"><div class="fc-score-num" style="color:#C17A10;">7.4</div><div class="fc-score-label">Salesforce</div></div>
+        <div class="fc-score"><div class="fc-score-num" style="color:#1A6B3C;">SMB</div><div class="fc-score-label">Winner</div></div>
+      </div>
+      <div class="fc-verdict">
+        <div><div class="fc-verdict-label">The Verdict</div><div class="fc-verdict-result">HubSpot wins for most small businesses</div></div>
+        <span style="color:rgba(255,255,255,0.4);font-size:16px;">→</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW GRID -->
+<div class="reviews-wrap" id="reviewGrid">
+
+  <div class="reviews-section-label">All reviews</div>
+
+  <!-- SOFTWARE -->
+  <div class="review-card" data-cat="software" data-title="gusto vs rippling payroll">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge software">Software</span><span class="rc-badge" style="background:#EBF3FB;color:#1B5E9E;">Payroll</span><span class="rc-new">New</span></div>
+      <div class="rc-title">Gusto vs Rippling: which payroll platform is worth it?</div>
+      <div class="rc-answer">Gusto wins for businesses under 100 employees. Rippling only makes sense if you need deep HR software integrations across your whole stack.</div>
+      <div class="rc-meta">8 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">9.2</div><div class="rc-score-label">Gusto</div></div>
+      <div class="rc-score"><div class="rc-score-num">8.7</div><div class="rc-score-label">Rippling</div></div>
+      <div class="rc-score"><div class="rc-score-num">$40</div><div class="rc-score-label">Gusto starts</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">Gusto wins</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="software" data-title="quickbooks freshbooks wave accounting">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge software">Software</span><span class="rc-badge" style="background:#EBF3FB;color:#1B5E9E;">Accounting</span></div>
+      <div class="rc-title">QuickBooks vs FreshBooks vs Wave: which wins for small business?</div>
+      <div class="rc-answer">QuickBooks wins on features. Wave wins on price (free). FreshBooks is best specifically for service businesses that invoice clients regularly.</div>
+      <div class="rc-meta">6 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">8.8</div><div class="rc-score-label">QuickBooks</div></div>
+      <div class="rc-score"><div class="rc-score-num">8.2</div><div class="rc-score-label">FreshBooks</div></div>
+      <div class="rc-score"><div class="rc-score-num">Free</div><div class="rc-score-label">Wave</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">QuickBooks wins</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="comparison" data-title="birdeye podium review software mortgage">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge comparison">Comparison</span><span class="rc-badge" style="background:#F5EEF8;color:#7B3FA0;">Review Software</span></div>
+      <div class="rc-title">Birdeye vs Podium: honest take for mortgage and lending companies</div>
+      <div class="rc-answer">Podium edges Birdeye for mortgage companies because of its SMS-first approach. Birdeye is better for multi-location retail. Both are expensive — get quotes from both before committing.</div>
+      <div class="rc-meta">7 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">7.8</div><div class="rc-score-label">Birdeye</div></div>
+      <div class="rc-score"><div class="rc-score-num">8.1</div><div class="rc-score-label">Podium</div></div>
+      <div class="rc-score"><div class="rc-score-num">$$$</div><div class="rc-score-label">Both pricey</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill caution">Depends on use case</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="franchise" data-title="chick fil a franchise review worth it">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge franchise">Franchise</span></div>
+      <div class="rc-title">Chick-fil-A franchise review: worth $10k to apply for something you don't own?</div>
+      <div class="rc-answer">Highest revenue per location in fast food. But you don't own it — Chick-fil-A does. No equity, no resale value, operator-style arrangement. Know exactly what you're signing before you apply.</div>
+      <div class="rc-meta">9 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">9.4</div><div class="rc-score-label">Brand</div></div>
+      <div class="rc-score"><div class="rc-score-num">4.1</div><div class="rc-score-label">Ownership</div></div>
+      <div class="rc-score"><div class="rc-score-num">High</div><div class="rc-score-label">Revenue</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill caution">Know what you sign</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="warning" data-title="merchant cash advance avoid predatory">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge warning">⚠️ Warning</span></div>
+      <div class="rc-title">Merchant cash advances: why you should almost never use one</div>
+      <div class="rc-answer">Effective APR regularly hits 100-300%. The daily repayment structure destroys cash flow. We cover the rare cases where it makes sense — but for most businesses this is the most expensive money you can borrow.</div>
+      <div class="rc-meta">5 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">2.1</div><div class="rc-score-label">Value score</div></div>
+      <div class="rc-score"><div class="rc-score-num">300%</div><div class="rc-score-label">Eff. APR</div></div>
+      <div class="rc-score"><div class="rc-score-num">High</div><div class="rc-score-label">Risk</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill avoid">Avoid in most cases</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="bestof" data-title="best crm mortgage loan officers">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge bestof">Best of</span><span class="rc-badge software">CRM</span></div>
+      <div class="rc-title">Best CRM for mortgage loan officers in 2026 — ranked by actual users</div>
+      <div class="rc-answer">HubSpot wins for most loan officers — free to start, scales well, integrates with email and calendar without a setup fee. Salesforce only makes sense if your brokerage is already enterprise-level.</div>
+      <div class="rc-meta">10 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">5</div><div class="rc-score-label">CRMs tested</div></div>
+      <div class="rc-score"><div class="rc-score-num">#1</div><div class="rc-score-label">HubSpot</div></div>
+      <div class="rc-score"><div class="rc-score-num">Free</div><div class="rc-score-label">Top pick starts</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">HubSpot recommended</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="franchise" data-title="mcdonalds franchise cost profit review">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge franchise">Franchise</span></div>
+      <div class="rc-title">McDonald's franchise cost and profit: the real numbers for 2026</div>
+      <div class="rc-answer">You need $500k+ liquid minimum and total investment runs $1M-$2.3M. Average owner-operator nets $150-200k annually. Strong brand, real ownership, but significant capital required upfront.</div>
+      <div class="rc-meta">8 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">8.6</div><div class="rc-score-label">Overall</div></div>
+      <div class="rc-score"><div class="rc-score-num">$1M+</div><div class="rc-score-label">Investment</div></div>
+      <div class="rc-score"><div class="rc-score-num">$175k</div><div class="rc-score-label">Avg net</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">Strong if capitalized</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="lender" data-title="sba lenders best small business loans">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge lender">Lenders</span><span class="rc-badge bestof">Best of</span></div>
+      <div class="rc-title">Best SBA lenders for small business in 2026 — ranked and reviewed</div>
+      <div class="rc-answer">Live Oak Bank leads for pure SBA volume and speed. Huntington is best for Midwest borrowers with existing relationships. Avoid any lender charging origination fees above 3% — it's not standard.</div>
+      <div class="rc-meta">11 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">7</div><div class="rc-score-label">Lenders reviewed</div></div>
+      <div class="rc-score"><div class="rc-score-num">#1</div><div class="rc-score-label">Live Oak</div></div>
+      <div class="rc-score"><div class="rc-score-num">Low</div><div class="rc-score-label">Min comp index</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">Live Oak Bank wins</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="software" data-title="gusto payroll review small business">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge software">Software</span><span class="rc-badge" style="background:#EBF3FB;color:#1B5E9E;">Payroll</span><span class="rc-badge verdict-pill sponsored" style="padding:2px 8px;">Sponsored</span></div>
+      <div class="rc-title">Gusto review 2026: is it actually worth $40/month for small business?</div>
+      <div class="rc-answer">Yes — for most businesses with 1-100 employees Gusto is the best value payroll platform on the market. Automated tax filings alone save 4-5 hours per quarter. The $40 base pays for itself in the first month.</div>
+      <div class="rc-meta">7 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">9.2</div><div class="rc-score-label">Overall</div></div>
+      <div class="rc-score"><div class="rc-score-num">$40</div><div class="rc-score-label">Base price</div></div>
+      <div class="rc-score"><div class="rc-score-num">Easy</div><div class="rc-score-label">Setup</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">Worth it</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="warning" data-title="amway mlm worth it income disclosure">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge warning">⚠️ Warning</span><span class="rc-badge franchise">MLM</span></div>
+      <div class="rc-title">Is Amway still worth joining in 2026? We looked at the real income data</div>
+      <div class="rc-answer">73% of Amway IBOs made zero profit in the last reported year. The real money is in recruiting, not selling product. If someone is pitching you Amway as a business opportunity, read their income disclosure first.</div>
+      <div class="rc-meta">6 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">2.8</div><div class="rc-score-label">Value score</div></div>
+      <div class="rc-score"><div class="rc-score-num">73%</div><div class="rc-score-label">Made $0</div></div>
+      <div class="rc-score"><div class="rc-score-num">High</div><div class="rc-score-label">Risk</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill avoid">Skip it</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="comparison" data-title="sba loan vs conventional loan comparison">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge comparison">Comparison</span><span class="rc-badge lender">Lending</span></div>
+      <div class="rc-title">SBA loan vs conventional loan: which should you choose in 2026?</div>
+      <div class="rc-answer">SBA wins for most small businesses — lower down payment, longer terms, rate caps. Go conventional only if you need funds in under 2 weeks or have excellent credit with significant collateral.</div>
+      <div class="rc-meta">7 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">9.2</div><div class="rc-score-label">SBA</div></div>
+      <div class="rc-score"><div class="rc-score-num">7.1</div><div class="rc-score-label">Conventional</div></div>
+      <div class="rc-score"><div class="rc-score-num">SBA</div><div class="rc-score-label">Winner</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">SBA wins</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <div class="review-card" data-cat="bestof" data-title="best payroll software small business 2026">
+    <div class="rc-top">
+      <div class="rc-badges"><span class="rc-badge bestof">Best of</span><span class="rc-badge software">Payroll</span></div>
+      <div class="rc-title">Best payroll software for small business in 2026 — ranked</div>
+      <div class="rc-answer">Gusto wins for most businesses under 100 employees. ADP is better if you're near 100+ employees and need HR depth. Wave Payroll wins on price but lacks automation. Skip Paychex for small business — it's built for enterprise.</div>
+      <div class="rc-meta">9 min · March 2026</div>
+    </div>
+    <div class="rc-scores">
+      <div class="rc-score"><div class="rc-score-num">6</div><div class="rc-score-label">Platforms tested</div></div>
+      <div class="rc-score"><div class="rc-score-num">#1</div><div class="rc-score-label">Gusto</div></div>
+      <div class="rc-score"><div class="rc-score-num">$40</div><div class="rc-score-label">Top pick starts</div></div>
+    </div>
+    <div class="rc-bottom"><span class="verdict-pill recommended">Gusto wins</span><span class="rc-cta">Read verdict →</span></div>
+  </div>
+
+  <button class="load-more" onclick="loadMore()">Load more reviews ↓</button>
+
+</div><!-- end reviews -->
+
+<!-- SUBMIT A REVIEW -->
+<div class="submit-cta">
+  <h3>Used a software or vendor we haven't reviewed?</h3>
+  <p>We're always looking for real operator experiences to inform our reviews. Tell us what you've used and what you think — we'll investigate and publish a verdict.</p>
+  <button class="submit-btn">Suggest a review →</button>
+</div>
+
+<!-- BBC -->
+<div class="bbc">
+  <h2>Need business financing?</h2>
+  <p>Bizpinions is editorially independent — but our advertising partner <strong>Blackburn Business Capital</strong> specializes in SBA loans, franchise financing, and commercial lending.</p>
+  <div class="bbc-box">
+    <div class="bbc-eye">Blackburn Business Capital</div>
+    <h3>Get the capital your business deserves</h3>
+    <p>SBA loans · Franchise financing · Working capital · Commercial lending. No call centers. No runaround.</p>
+    <button class="bbc-btn">Apply for financing →</button>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>New reviews every week.</h2>
+  <p>Subscribe and get every new verdict delivered to your inbox. <strong>Software, franchises, lenders, and vendors</strong> — reviewed honestly before you spend a dollar.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="Your email address"/>
+    <button class="nl-btn">Subscribe free →</button>
+  </div>
+  <div class="nl-fine">No spam · Unsubscribe anytime · Free forever</div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+
+<script>
+var currentCat = 'all';
+
+function filterCat(cat, el){
+  currentCat = cat;
+  document.querySelectorAll('.fpill').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  applyFilters();
+}
+
+function filterReviews(){
+  applyFilters();
+}
+
+function applyFilters(){
+  var query = document.getElementById('searchInput').value.toLowerCase();
+  var cards = document.querySelectorAll('.review-card');
+  var count = 0;
+  cards.forEach(function(card){
+    var catMatch = currentCat === 'all' || card.dataset.cat === currentCat;
+    var titleMatch = !query || card.dataset.title.includes(query) || card.innerText.toLowerCase().includes(query);
+    if(catMatch && titleMatch){
+      card.classList.remove('hidden');
+      count++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  document.getElementById('resultCount').textContent = count;
+}
+
+function loadMore(){
+  // In production this would fetch more reviews
+  var btn = document.querySelector('.load-more');
+  btn.textContent = 'More reviews coming soon →';
+  btn.style.opacity = '0.5';
+  btn.style.cursor = 'default';
+}
+</script>
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

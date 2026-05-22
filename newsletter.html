@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="color-scheme" content="light only"/>
+<title>Newsletter — Bizpinions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#00274C;--maize:#FFCB05;--cream:#F8F4EE;--cream2:#F2EDE4;--white:#FFFFFF;--text:#1a1a14;--text2:#3d3825;--text3:#7a7060;--border:#E2DDD4;--green:#1A6B3C;}
+html{background:#ffffff !important;color-scheme:light only;}
+body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}.nav-logo span{color:var(--maize);}
+.nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.pill-icon{font-size:13px;line-height:1;}.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.hero{background:var(--navy);padding:36px 20px 32px;text-align:center;}
+.hero-icon{font-size:48px;margin-bottom:16px;}
+.hero h1{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 em{color:var(--maize);font-style:italic;}
+.hero p{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;}
+.hero-form{display:flex;flex-direction:column;gap:8px;max-width:480px;margin:0 auto;}
+.hero-input{padding:15px 18px;border-radius:8px;border:2px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:var(--white);font-size:16px;font-family:'Inter',sans-serif;}
+.hero-input:focus{outline:none;border-color:var(--maize);}
+.hero-input::placeholder{color:rgba(255,255,255,0.3);}
+.hero-btn{background:var(--maize);color:var(--navy);font-size:16px;font-weight:700;padding:15px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.hero-fine{font-size:11px;color:rgba(255,255,255,0.3);margin-top:8px;}
+.body{padding:28px 20px;}
+.body h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.body p{font-size:15px;color:var(--text);line-height:1.82;margin-bottom:16px;}
+.what-you-get{display:grid;grid-template-columns:1fr;gap:10px;margin:20px 0;}
+.wyg-card{background:var(--cream);border-radius:10px;padding:16px;display:flex;gap:14px;align-items:flex-start;}
+.wyg-icon{font-size:24px;flex-shrink:0;}
+.wyg-title{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.wyg-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+.ebook-section{background:var(--cream);border-radius:12px;padding:20px;margin:20px 0;}
+.ebook-section-head{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--maize);}
+.ebook-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.ebook-row:last-child{border:none;}
+.ebook-icon{font-size:24px;flex-shrink:0;}
+.ebook-info h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.ebook-info p{font-size:11px;color:var(--text3);}
+.ebook-badge{font-size:10px;font-weight:700;color:var(--green);background:#E8F5ED;padding:3px 8px;border-radius:20px;white-space:nowrap;margin-left:auto;flex-shrink:0;}
+.sample-issue{background:var(--white);border:2px solid var(--border);border-radius:12px;overflow:hidden;margin:20px 0;}
+.si-header{background:var(--navy);padding:14px 16px;}
+.si-from{font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;}
+.si-subject{font-size:14px;font-weight:700;color:var(--white);}
+.si-body{padding:16px;}
+.si-section{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.si-section:last-child{border:none;margin:0;padding:0;}
+.si-section-label{font-size:10px;font-weight:700;color:var(--maize);background:var(--navy);display:inline-block;padding:2px 8px;border-radius:3px;margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;font-size:9px;}
+.si-section h4{font-family:'Lora',serif;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.si-section p{font-size:12px;color:var(--text2);line-height:1.6;}
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="hero">
+  <div class="hero-icon">📬</div>
+  <h1>One email per week.<br><em>Worth every second.</em></h1>
+  <p>New reviews, funding guides, software comparisons, and franchise opportunities — for business owners at every stage. Free forever. No fluff.</p>
+  <div class="hero-form">
+    <input class="hero-input" type="email" placeholder="Your email address"/>
+    <button class="hero-btn">Subscribe free →</button>
+    <div class="hero-fine">No spam · Unsubscribe anytime · Join thousands of business owners</div>
+  </div>
+</div>
+<div class="body">
+  <h2>What you get every week</h2>
+  <div class="what-you-get">
+    <div class="wyg-card"><span class="wyg-icon">⚖️</span><div><div class="wyg-title">New Verdict reviews</div><div class="wyg-desc">Every new software review, franchise review, and vendor comparison we publish — straight to your inbox.</div></div></div>
+    <div class="wyg-card"><span class="wyg-icon">💰</span><div><div class="wyg-title">Funding alerts</div><div class="wyg-desc">SBA rate changes, new loan programs, and funding opportunities for small businesses.</div></div></div>
+    <div class="wyg-card"><span class="wyg-icon">🏪</span><div><div class="wyg-title">Franchise spotlights</div><div class="wyg-desc">New franchise opportunities, income disclosures, and our honest take on the week's biggest franchise news.</div></div></div>
+    <div class="wyg-card"><span class="wyg-icon">📖</span><div><div class="wyg-title">New guides</div><div class="wyg-desc">Every new how-to guide across all five pillars — start, fund, run, buy, and sell.</div></div></div>
+  </div>
+
+  <h2>Your free ebooks</h2>
+  <p>Pick your stage and get the right ebook instantly when you subscribe.</p>
+  <div class="ebook-section">
+    <div class="ebook-section-head">Choose your free guide</div>
+    <div class="ebook-row"><span class="ebook-icon">🚀</span><div class="ebook-info"><h4>Business Launch Checklist</h4><p>12 pages · Start it series</p></div><span class="ebook-badge">Free</span></div>
+    <div class="ebook-row"><span class="ebook-icon">💰</span><div class="ebook-info"><h4>Bank-Ready Loan Application Guide</h4><p>15 pages · Fund it series</p></div><span class="ebook-badge">Free</span></div>
+    <div class="ebook-row"><span class="ebook-icon">⚙️</span><div class="ebook-info"><h4>Small Business Toolkit</h4><p>10 pages · Run it series</p></div><span class="ebook-badge">Free</span></div>
+    <div class="ebook-row"><span class="ebook-icon">🏪</span><div class="ebook-info"><h4>Franchise Due Diligence Checklist</h4><p>14 pages · Buy it series</p></div><span class="ebook-badge">Free</span></div>
+    <div class="ebook-row"><span class="ebook-icon">🏁</span><div class="ebook-info"><h4>Business Exit Readiness Guide</h4><p>16 pages · Sell it series</p></div><span class="ebook-badge">Free</span></div>
+  </div>
+
+  <h2>Sample issue</h2>
+  <div class="sample-issue">
+    <div class="si-header"><div class="si-from">From: Bizpinions · bizpinions.com</div><div class="si-subject">New verdict: Gusto vs Rippling — plus the SBA rate change you need to know about</div></div>
+    <div class="si-body">
+      <div class="si-section"><span class="si-section-label">New Verdict</span><h4>Gusto vs Rippling: Gusto wins for under 100 employees</h4><p>We tested both for 30 days. Gusto is simpler, cheaper, and handles tax filing better. Rippling only makes sense if you need deep HR integrations. Full review →</p></div>
+      <div class="si-section"><span class="si-section-label">Funding Alert</span><h4>SBA rates dropped 0.25% this week</h4><p>The Fed's latest adjustment affects SBA 7(a) loans immediately. If you're in the middle of an application, here's what it means for your rate. →</p></div>
+      <div class="si-section"><span class="si-section-label">Franchise Spotlight</span><h4>This cleaning franchise is growing faster than any fast food chain right now</h4><p>Under $50k to open, recurring revenue model, and a fragmented market ripe for consolidation. Our take → </p></div>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

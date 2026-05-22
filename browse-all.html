@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="color-scheme" content="light only">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Browse All Guides — Bizpinions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#00274C;--maize:#FFCB05;--cream:#F8F4EE;--cream2:#F2EDE4;--white:#FFFFFF;--text:#1a1a14;--text2:#3d3825;--text3:#7a7060;--border:#E2DDD4;--amber:#C17A10;}
+html{background:#ffffff !important;color-scheme:light only;} body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}.nav-logo span{color:var(--maize);}
+.nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.stage-pill.active{background:var(--maize);border-color:var(--maize);}
+.pill-icon{font-size:13px;line-height:1;}.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.stage-pill.active .pill-text{color:var(--navy);}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy);padding:28px 16px 24px;}
+.ph-eyebrow{display:inline-block;background:var(--maize);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:4px;margin-bottom:14px;}
+.ph-title{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--white);line-height:1.15;margin-bottom:8px;}
+.ph-title em{color:var(--maize);font-style:italic;}
+.ph-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:16px;}
+.ph-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(255,255,255,0.12);border-radius:8px;overflow:hidden;}
+.ph-stat{padding:12px 8px;text-align:center;background:rgba(255,255,255,0.05);}
+.ph-stat+.ph-stat{border-left:1px solid rgba(255,255,255,0.1);}
+.ph-stat-num{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--maize);line-height:1;}
+.ph-stat-label{font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px;text-transform:uppercase;}
+
+/* SEARCH */
+.search-section{background:var(--cream);padding:16px;border-bottom:1px solid var(--border);}
+.search-bar{display:flex;gap:8px;margin-bottom:12px;}
+.search-input{flex:1;padding:11px 14px;border-radius:7px;border:1.5px solid var(--border);background:var(--white);color:var(--text);font-size:14px;font-family:'Inter',sans-serif;}
+.search-input:focus{outline:none;border-color:var(--navy);}
+.search-btn{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:11px 16px;border-radius:7px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.filter-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.filter-pills::-webkit-scrollbar{display:none;}
+.fpill{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:6px 14px;white-space:nowrap;cursor:pointer;font-size:12px;font-weight:600;color:var(--text2);font-family:'Inter',sans-serif;flex-shrink:0;}
+.fpill.active{background:var(--navy);border-color:var(--navy);color:var(--white);}
+
+.results-bar{background:var(--white);padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.results-count{font-size:12px;color:var(--text3);}.results-count strong{color:var(--navy);font-weight:600;}
+
+/* PILLAR SECTIONS */
+.pillar-section{padding:20px 16px 8px;}
+.pillar-section-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+.ps-icon{font-size:20px;}
+.ps-title{font-family:'Lora',serif;font-size:18px;font-weight:700;}
+.ps-count{font-size:11px;color:var(--text3);margin-left:auto;font-weight:600;}
+.ps-link{font-size:11px;font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--maize);padding-bottom:1px;}
+
+/* start-it blue */
+.ps-start .ps-title{color:#1B5E9E;}.ps-start .ps-link{color:#1B5E9E;}
+/* fund-it green */
+.ps-fund .ps-title{color:#1A6B3C;}.ps-fund .ps-link{color:#1A6B3C;}
+/* run-it purple */
+.ps-run .ps-title{color:#7B3FA0;}.ps-run .ps-link{color:#7B3FA0;}
+/* buy-it amber */
+.ps-buy .ps-title{color:#C17A10;}.ps-buy .ps-link{color:#C17A10;}
+/* sell-it red */
+.ps-sell .ps-title{color:#A0291A;}.ps-sell .ps-link{color:#A0291A;}
+
+.acard{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.acard-left{}
+.acard-cat{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;padding:2px 7px;border-radius:3px;margin-bottom:5px;}
+.cat-start{background:#EBF3FB;color:#1B5E9E;}.cat-fund{background:#E8F5ED;color:#1A6B3C;}.cat-run{background:#F5EEF8;color:#7B3FA0;}.cat-buy{background:#FDF6E7;color:#C17A10;}.cat-sell{background:#FCECEA;color:#A0291A;}
+.acard h4{font-family:'Lora',serif;font-size:14px;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:3px;}
+.acard-meta{font-size:10px;color:var(--text3);}
+.acard-arrow{color:var(--maize);font-size:16px;font-weight:700;flex-shrink:0;}
+.acard.hidden{display:none;}
+.show-more{width:100%;padding:11px;background:var(--cream);border:1px solid var(--border);border-radius:7px;color:var(--navy);font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:8px;}
+
+.newsletter{background:var(--navy);padding:28px 16px;}
+.newsletter h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.newsletter p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:18px;}
+.newsletter p strong{color:var(--maize);}
+.nl-form{display:flex;flex-direction:column;gap:8px;}
+.nl-input{padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.07);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;}
+.nl-input::placeholder{color:rgba(255,255,255,0.28);}
+.nl-btn{background:var(--maize);color:var(--navy);font-size:15px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.nl-fine{font-size:10px;color:rgba(255,255,255,0.22);text-align:center;margin-top:6px;}
+
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+
+<div class="page-hero">
+  <div class="ph-eyebrow">All guides</div>
+  <div class="ph-title">Browse all 120<br><em>guides and articles.</em></div>
+  <p class="ph-desc">Every guide across all five pillars. Search any topic or filter by stage. The answer is always in the first paragraph.</p>
+  <div class="ph-stats">
+    <div class="ph-stat"><div class="ph-stat-num">120</div><div class="ph-stat-label">Total guides</div></div>
+    <div class="ph-stat"><div class="ph-stat-num">5</div><div class="ph-stat-label">Pillars</div></div>
+    <div class="ph-stat"><div class="ph-stat-num">60s</div><div class="ph-stat-label">To answer</div></div>
+  </div>
+</div>
+
+<div class="search-section">
+  <div class="search-bar">
+    <input class="search-input" id="searchInput" type="text" placeholder="Search any topic — SBA loan, franchise, CRM, payroll..." oninput="filterAll()"/>
+    <button class="search-btn">Search</button>
+  </div>
+  <div class="filter-pills">
+    <div class="fpill active" onclick="filterPillar('all',this)">All 120</div>
+    <div class="fpill" onclick="filterPillar('start',this)">🚀 Start it</div>
+    <div class="fpill" onclick="filterPillar('fund',this)">💰 Fund it</div>
+    <div class="fpill" onclick="filterPillar('run',this)">⚙️ Run it</div>
+    <div class="fpill" onclick="filterPillar('buy',this)">🏪 Buy it</div>
+    <div class="fpill" onclick="filterPillar('sell',this)">🏁 Sell it</div>
+  </div>
+</div>
+<div class="results-bar"><span class="results-count">Showing <strong id="resultCount">120</strong> guides</span></div>
+
+<!-- START IT -->
+<div class="pillar-section" id="section-start">
+  <div class="pillar-section-hd ps-start">
+    <span class="ps-icon">🚀</span>
+    <span class="ps-title">Start it</span>
+    <span class="ps-count">20 guides</span>
+    <a href="/start-it" class="ps-link">View all →</a>
+  </div>
+  <div class="acard" data-pillar="start" data-title="llc vs s-corp vs sole proprietor structure"><div class="acard-left"><span class="acard-cat cat-start">Structure</span><h4>LLC vs S-Corp vs sole proprietor: which structure is right for you?</h4><div class="acard-meta">6 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="start" data-title="how to start business no money 2026"><div class="acard-left"><span class="acard-cat cat-start">Ideas</span><h4>How to start a business with no money in 2026</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="start" data-title="do you need business license real answer"><div class="acard-left"><span class="acard-cat cat-start">Registration</span><h4>Do you need a business license? Here's the real answer</h4><div class="acard-meta">4 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="start" data-title="best businesses start under 10000"><div class="acard-left"><span class="acard-cat cat-start">Ideas</span><h4>The 10 best businesses to start with under $10,000</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="start" data-title="how to build business credit from zero"><div class="acard-left"><span class="acard-cat cat-start">Structure</span><h4>How to build business credit from zero</h4><div class="acard-meta">6 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <button class="show-more" onclick="toggleMore('start-more',this)">Show 15 more Start it guides ↓</button>
+  <div id="start-more" style="display:none">
+    <div class="acard" data-pillar="start" data-title="how to get ein number irs"><div class="acard-left"><span class="acard-cat cat-start">Registration</span><h4>How to get your EIN from the IRS — step by step</h4><div class="acard-meta">3 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="start" data-title="how to open business bank account"><div class="acard-left"><span class="acard-cat cat-start">First Year</span><h4>How to open a business bank account: what banks won't tell you</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="start" data-title="how to start cleaning business"><div class="acard-left"><span class="acard-cat cat-start">Ideas</span><h4>How to start a cleaning business from scratch in 2026</h4><div class="acard-meta">6 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="start" data-title="how to start online business 7 models"><div class="acard-left"><span class="acard-cat cat-start">Ideas</span><h4>How to start an online business: 7 models that work right now</h4><div class="acard-meta">8 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="start" data-title="what is business plan do you need one"><div class="acard-left"><span class="acard-cat cat-start">Planning</span><h4>What is a business plan and do you really need one?</h4><div class="acard-meta">4 min</div></div><span class="acard-arrow">→</span></div>
+  </div>
+</div>
+
+<!-- FUND IT -->
+<div class="pillar-section" id="section-fund">
+  <div class="pillar-section-hd ps-fund">
+    <span class="ps-icon">💰</span>
+    <span class="ps-title">Fund it</span>
+    <span class="ps-count">40 guides</span>
+    <a href="/fund-it" class="ps-link">View all →</a>
+  </div>
+  <div class="acard" data-pillar="fund" data-title="sba loan vs conventional loan which choose"><div class="acard-left"><span class="acard-cat cat-fund">SBA Loans</span><h4>SBA loan vs conventional loan: which should you choose in 2026?</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="fund" data-title="small business loan bad credit how to get"><div class="acard-left"><span class="acard-cat cat-fund">Startup</span><h4>How to get a small business loan with bad credit</h4><div class="acard-meta">6 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="fund" data-title="working capital loans small business funded fast"><div class="acard-left"><span class="acard-cat cat-fund">Working Capital</span><h4>Working capital loans for small business: how to get funded fast</h4><div class="acard-meta">5 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="fund" data-title="sba loan for franchise complete guide"><div class="acard-left"><span class="acard-cat cat-fund">SBA Loans</span><h4>SBA loan for franchise: everything you need to know</h4><div class="acard-meta">8 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="fund" data-title="sba 7a loan explained how to qualify"><div class="acard-left"><span class="acard-cat cat-fund">SBA Loans</span><h4>SBA 7(a) loan explained: the most popular SBA program</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <button class="show-more" onclick="toggleMore('fund-more',this)">Show 35 more Fund it guides ↓</button>
+  <div id="fund-more" style="display:none">
+    <div class="acard" data-pillar="fund" data-title="sba express loan fast 36 hours"><div class="acard-left"><span class="acard-cat cat-fund">SBA Loans</span><h4>SBA express loan: how to get fast SBA funding in 36 hours</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="fund" data-title="sba 504 loan real estate equipment"><div class="acard-left"><span class="acard-cat cat-fund">SBA Loans</span><h4>SBA 504 loan: for real estate and major equipment</h4><div class="acard-meta">6 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="fund" data-title="merchant cash advance why avoid predatory"><div class="acard-left"><span class="acard-cat cat-fund">Alternative</span><h4>Merchant cash advance: what it is and exactly why to avoid it</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="fund" data-title="startup business funding every option 2026"><div class="acard-left"><span class="acard-cat cat-fund">Startup</span><h4>Startup business funding: every option for new businesses in 2026</h4><div class="acard-meta">8 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="fund" data-title="sba loans women businesses programs apply"><div class="acard-left"><span class="acard-cat cat-fund">SBA Loans</span><h4>SBA loans for women-owned businesses: programs and how to apply</h4><div class="acard-meta">6 min</div></div><span class="acard-arrow">→</span></div>
+  </div>
+</div>
+
+<!-- RUN IT -->
+<div class="pillar-section" id="section-run">
+  <div class="pillar-section-hd ps-run">
+    <span class="ps-icon">⚙️</span>
+    <span class="ps-title">Run it</span>
+    <span class="ps-count">20 guides</span>
+    <a href="/run-it" class="ps-link">View all →</a>
+  </div>
+  <div class="acard" data-pillar="run" data-title="best accounting software small business 2026"><div class="acard-left"><span class="acard-cat cat-run">Software</span><h4>Best accounting software for small business in 2026 — ranked</h4><div class="acard-meta">6 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="run" data-title="automate small business ai tools 2026"><div class="acard-left"><span class="acard-cat cat-run">Software</span><h4>How to automate your small business with AI tools in 2026</h4><div class="acard-meta">8 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="run" data-title="how to fix cash flow problems small business"><div class="acard-left"><span class="acard-cat cat-run">Finance</span><h4>How to deal with a cash flow crisis before it kills your business</h4><div class="acard-meta">6 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="run" data-title="how to hire first employee without mistakes"><div class="acard-left"><span class="acard-cat cat-run">Hiring</span><h4>How to hire your first employee without making costly mistakes</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="run" data-title="best crm software small business owners ranked"><div class="acard-left"><span class="acard-cat cat-run">Software</span><h4>Best CRM software for small business owners in 2026 — ranked</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <button class="show-more" onclick="toggleMore('run-more',this)">Show 15 more Run it guides ↓</button>
+  <div id="run-more" style="display:none">
+    <div class="acard" data-pillar="run" data-title="social media marketing small business works"><div class="acard-left"><span class="acard-cat cat-run">Marketing</span><h4>Social media marketing for business owners: what actually works</h4><div class="acard-meta">6 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="run" data-title="how to set up payroll small business"><div class="acard-left"><span class="acard-cat cat-run">Operations</span><h4>How to set up payroll for a small business: the complete guide</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="run" data-title="email marketing small business beginner advanced"><div class="acard-left"><span class="acard-cat cat-run">Marketing</span><h4>Email marketing for small business: beginner to advanced guide</h4><div class="acard-meta">7 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="run" data-title="business insurance what you need dont"><div class="acard-left"><span class="acard-cat cat-run">Operations</span><h4>Business insurance: what you need and what you don't</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="run" data-title="how to create business budget holds"><div class="acard-left"><span class="acard-cat cat-run">Finance</span><h4>How to create a business budget that actually holds</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+  </div>
+</div>
+
+<!-- BUY IT -->
+<div class="pillar-section" id="section-buy">
+  <div class="pillar-section-hd ps-buy">
+    <span class="ps-icon">🏪</span>
+    <span class="ps-title">Buy it</span>
+    <span class="ps-count">20 guides</span>
+    <a href="/buy-it" class="ps-link">View all →</a>
+  </div>
+  <div class="acard" data-pillar="buy" data-title="chick fil a franchise worth investment 2026"><div class="acard-left"><span class="acard-cat cat-buy">Franchise</span><h4>Is Chick-fil-A franchise worth the investment in 2026?</h4><div class="acard-meta">9 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="buy" data-title="top 10 fastest growing franchises 2026 roi"><div class="acard-left"><span class="acard-cat cat-buy">Franchise</span><h4>Top 10 fastest growing franchises in 2026 — ranked by actual ROI</h4><div class="acard-meta">8 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="buy" data-title="mcdonalds franchise cost profit real numbers"><div class="acard-left"><span class="acard-cat cat-buy">Franchise</span><h4>McDonald's franchise cost and profit: the real numbers for 2026</h4><div class="acard-meta">8 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="buy" data-title="what is fdd franchise disclosure document read"><div class="acard-left"><span class="acard-cat cat-buy">Due Diligence</span><h4>What is a franchise disclosure document (FDD) and how to read it</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="buy" data-title="how to buy existing business step by step"><div class="acard-left"><span class="acard-cat cat-buy">Acquisition</span><h4>How to buy an existing business: the complete step-by-step guide</h4><div class="acard-meta">8 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <button class="show-more" onclick="toggleMore('buy-more',this)">Show 15 more Buy it guides ↓</button>
+  <div id="buy-more" style="display:none">
+    <div class="acard" data-pillar="buy" data-title="due diligence before buying business complete guide"><div class="acard-left"><span class="acard-cat cat-buy">Due Diligence</span><h4>How to do due diligence before buying any business</h4><div class="acard-meta">9 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="buy" data-title="best franchises under 50000 start 2026"><div class="acard-left"><span class="acard-cat cat-buy">Franchise</span><h4>Best franchises under $50,000 to start in 2026</h4><div class="acard-meta">7 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="buy" data-title="is amway worth joining 2026 income data"><div class="acard-left"><span class="acard-cat cat-buy">MLM</span><h4>Is Amway still worth joining in 2026? Real income data</h4><div class="acard-meta">6 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="buy" data-title="subway franchise review pros cons owners"><div class="acard-left"><span class="acard-cat cat-buy">Franchise</span><h4>Subway franchise review: pros, cons, and real owner opinions</h4><div class="acard-meta">7 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="buy" data-title="mlm vs franchise honest comparison"><div class="acard-left"><span class="acard-cat cat-buy">MLM</span><h4>MLM vs franchise: the honest comparison nobody gives you</h4><div class="acard-meta">6 min</div></div><span class="acard-arrow">→</span></div>
+  </div>
+</div>
+
+<!-- SELL IT -->
+<div class="pillar-section" id="section-sell">
+  <div class="pillar-section-hd ps-sell">
+    <span class="ps-icon">🏁</span>
+    <span class="ps-title">Sell it</span>
+    <span class="ps-count">20 guides</span>
+    <a href="/sell-it" class="ps-link">View all →</a>
+  </div>
+  <div class="acard" data-pillar="sell" data-title="how to value small business three methods"><div class="acard-left"><span class="acard-cat cat-sell">Valuation</span><h4>How to value a small business: the three methods that actually matter</h4><div class="acard-meta">7 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="sell" data-title="ebitda vs sde which multiple price business"><div class="acard-left"><span class="acard-cat cat-sell">Valuation</span><h4>EBITDA vs SDE: which multiple to use to price your business</h4><div class="acard-meta">5 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="sell" data-title="business exit strategies which one right"><div class="acard-left"><span class="acard-cat cat-sell">Exit Strategy</span><h4>Business exit strategies: which one is right for your situation?</h4><div class="acard-meta">6 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="sell" data-title="how to sell business without broker"><div class="acard-left"><span class="acard-cat cat-sell">Finding Buyers</span><h4>How to sell a business without a broker</h4><div class="acard-meta">6 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <div class="acard" data-pillar="sell" data-title="how much is my business worth formula"><div class="acard-left"><span class="acard-cat cat-sell">Valuation</span><h4>How much is my business worth? Use this formula</h4><div class="acard-meta">5 min · March 2026</div></div><span class="acard-arrow">→</span></div>
+  <button class="show-more" onclick="toggleMore('sell-more',this)">Show 15 more Sell it guides ↓</button>
+  <div id="sell-more" style="display:none">
+    <div class="acard" data-pillar="sell" data-title="how taxes work when you sell business"><div class="acard-left"><span class="acard-cat cat-sell">Tax Planning</span><h4>How taxes work when you sell a business — what sellers get wrong</h4><div class="acard-meta">8 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="sell" data-title="seller financing explained how to sell get paid"><div class="acard-left"><span class="acard-cat cat-sell">Exit Strategy</span><h4>Seller financing explained: how to sell and get paid over time</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="sell" data-title="asset sale vs stock sale difference costs sellers"><div class="acard-left"><span class="acard-cat cat-sell">Finding Buyers</span><h4>Asset sale vs stock sale: the difference that costs sellers money</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="sell" data-title="best marketplaces list business for sale 2026"><div class="acard-left"><span class="acard-cat cat-sell">Finding Buyers</span><h4>Best marketplaces to list a business for sale in 2026</h4><div class="acard-meta">5 min</div></div><span class="acard-arrow">→</span></div>
+    <div class="acard" data-pillar="sell" data-title="how to prepare business for sale 2 years"><div class="acard-left"><span class="acard-cat cat-sell">Exit Strategy</span><h4>How to prepare your business for sale 2 years in advance</h4><div class="acard-meta">7 min</div></div><span class="acard-arrow">→</span></div>
+  </div>
+</div>
+
+<div class="newsletter">
+  <h2>Get every new guide in your inbox.</h2>
+  <p>One email per week. <strong>New guides, reviews, and straight talk on software, franchises, and funding.</strong> Free forever.</p>
+  <div class="nl-form"><input class="nl-input" type="email" placeholder="Your email address"/><button class="nl-btn">Subscribe free →</button></div>
+  <div class="nl-fine">No spam · Unsubscribe anytime · Free forever</div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+
+<script>
+var currentPillar = 'all';
+function filterPillar(pillar, el){
+  currentPillar = pillar;
+  document.querySelectorAll('.fpill').forEach(function(p){p.classList.remove('active');});
+  el.classList.add('active');
+  var sections = document.querySelectorAll('.pillar-section');
+  sections.forEach(function(s){
+    s.style.display = (pillar === 'all' || s.id === 'section-'+pillar) ? 'block' : 'none';
+  });
+  updateCount();
+}
+function filterAll(){
+  var q = document.getElementById('searchInput').value.toLowerCase();
+  var cards = document.querySelectorAll('.acard');
+  var count = 0;
+  cards.forEach(function(c){
+    var match = !q || c.dataset.title.includes(q) || c.innerText.toLowerCase().includes(q);
+    c.classList.toggle('hidden', !match);
+    if(match) count++;
+  });
+  document.getElementById('resultCount').textContent = q ? count : 120;
+}
+function updateCount(){
+  var visible = document.querySelectorAll('.pillar-section:not([style*="none"]) .acard:not(.hidden)').length;
+  document.getElementById('resultCount').textContent = visible;
+}
+function toggleMore(id, btn){
+  var el = document.getElementById(id);
+  var open = el.style.display !== 'none';
+  el.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? btn.textContent.replace('↑','↓').replace('Hide','Show') : btn.textContent.replace('↓','↑').replace('Show','Hide');
+}
+</script>
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

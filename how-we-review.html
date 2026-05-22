@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="color-scheme" content="light only"/>
+<title>How We Review — Bizpinions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#00274C;--maize:#FFCB05;--cream:#F8F4EE;--cream2:#F2EDE4;--white:#FFFFFF;--text:#1a1a14;--text2:#3d3825;--text3:#7a7060;--border:#E2DDD4;--green:#1A6B3C;--amber:#C17A10;}
+html{background:#ffffff !important;color-scheme:light only;}
+body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}.nav-logo span{color:var(--maize);}
+.nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.pill-icon{font-size:13px;line-height:1;}.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.hero{background:var(--navy);padding:32px 20px 28px;}
+.hero-eye{display:inline-block;background:var(--maize);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:14px;}
+.hero h1{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 em{color:var(--maize);font-style:italic;}
+.hero p{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;}
+.body{padding:28px 20px;}
+.body h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.body p{font-size:15px;color:var(--text);line-height:1.82;margin-bottom:16px;}
+.body p strong{color:var(--navy);}
+.step-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start;}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--maize);line-height:1;flex-shrink:0;}
+.step-content h3{font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.step-content p{font-size:13px;color:var(--text2);line-height:1.65;margin:0;}
+.score-explainer{background:var(--cream);border-radius:10px;padding:16px;margin:20px 0;}
+.se-head{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.score-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.score-row:last-child{border:none;margin:0;padding:0;}
+.score-range{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--navy);width:50px;flex-shrink:0;}
+.score-label{font-size:13px;font-weight:700;margin-bottom:2px;}
+.score-desc{font-size:11px;color:var(--text3);}
+.score-row.top .score-label{color:var(--green);}
+.score-row.mid .score-label{color:var(--amber);}
+.score-row.low .score-label{color:#A0291A;}
+.disclosure-box{background:var(--navy);border-radius:10px;padding:18px;margin:20px 0;}
+.db-head{font-size:11px;font-weight:700;color:rgba(255,203,5,0.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.db-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+.db-icon{font-size:16px;flex-shrink:0;}
+.db-text h4{font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.db-text p{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;}
+.newsletter{background:var(--navy);padding:28px 20px;}
+.newsletter h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.newsletter p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:18px;}
+.newsletter p strong{color:var(--maize);}
+.nl-form{display:flex;flex-direction:column;gap:8px;}
+.nl-input{padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.07);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;}
+.nl-input::placeholder{color:rgba(255,255,255,0.28);}
+.nl-btn{background:var(--maize);color:var(--navy);font-size:15px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.nl-fine{font-size:10px;color:rgba(255,255,255,0.22);text-align:center;margin-top:6px;}
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="hero">
+  <div class="hero-eye">How we review</div>
+  <h1>We test it.<br>We score it.<br><em>We tell you the truth.</em></h1>
+  <p>Our review process is the same every time — research, testing, scoring, and a verdict in the first paragraph. No exceptions.</p>
+</div>
+<div class="body">
+  <h2>Our review process</h2>
+  <div class="step-card"><div class="step-num">1</div><div class="step-content"><h3>We test the product</h3><p>Every software review is based on actual use — free trial, paid account, or extended testing. Franchise reviews are based on FDD analysis, operator interviews, and financial disclosure review.</p></div></div>
+  <div class="step-card"><div class="step-num">2</div><div class="step-content"><h3>We score 6 categories</h3><p>Every review scores the product on ease of use, value for money, core features, support quality, integrations, and long-term scalability. Each scored 1-10.</p></div></div>
+  <div class="step-card"><div class="step-num">3</div><div class="step-content"><h3>We write the verdict first</h3><p>Before writing the article, we write the verdict. One paragraph. What it is, who should buy it, who shouldn't, and what the alternative is. This is always the first thing you see.</p></div></div>
+  <div class="step-card"><div class="step-num">4</div><div class="step-content"><h3>We include the cons</h3><p>Every review includes what doesn't work. A review with no cons isn't a review — it's an ad. We document every limitation we find before we publish.</p></div></div>
+  <div class="step-card"><div class="step-num">5</div><div class="step-content"><h3>We update regularly</h3><p>Pricing changes. Software improves. Franchises open and close. Every review is dated and updated when material information changes.</p></div></div>
+
+  <h2>How we score</h2>
+  <div class="score-explainer">
+    <div class="se-head">Score guide</div>
+    <div class="score-row top"><div class="score-range">9-10</div><div><div class="score-label">Excellent — highly recommended</div><div class="score-desc">Best in class. Worth paying for. Recommend without reservation.</div></div></div>
+    <div class="score-row top"><div class="score-range">7-8</div><div><div class="score-label">Good — recommended with caveats</div><div class="score-desc">Solid product with some limitations. Right for specific use cases.</div></div></div>
+    <div class="score-row mid"><div class="score-range">5-6</div><div><div class="score-label">Average — consider alternatives</div><div class="score-desc">Works but there are better options for most people.</div></div></div>
+    <div class="score-row low"><div class="score-range">3-4</div><div><div class="score-label">Poor — not recommended</div><div class="score-desc">Significant problems. Only for specific edge cases.</div></div></div>
+    <div class="score-row low"><div class="score-range">1-2</div><div><div class="score-label">Avoid</div><div class="score-desc">We actively warn against this product or opportunity.</div></div></div>
+  </div>
+
+  <h2>Our disclosure policy</h2>
+  <div class="disclosure-box">
+    <div class="db-head">Full disclosure</div>
+    <div class="db-item"><span class="db-icon">💰</span><div class="db-text"><h4>Affiliate commissions</h4><p>We earn commissions when you buy through our links. Disclosed on every page. Our scores are never influenced by affiliate relationships.</p></div></div>
+    <div class="db-item"><span class="db-icon">📌</span><div class="db-text"><h4>Sponsored placements</h4><p>Companies can pay to be reviewed and featured on Bizpinions. Always labeled "Sponsored placement" on the review page. Our methodology is unchanged for sponsored reviews.</p></div></div>
+    <div class="db-item"><span class="db-icon">📰</span><div class="db-text"><h4>Newsletter sponsorships</h4><p>One sponsor per weekly email. Always labeled as sponsored content. Editorial content is never influenced by newsletter sponsors.</p></div></div>
+  </div>
+</div>
+<div class="newsletter">
+  <h2>Like what you see?</h2>
+  <p>One email per week. <strong>New reviews, funding guides, and straight talk on business software and franchises.</strong> Free forever.</p>
+  <div class="nl-form"><input class="nl-input" type="email" placeholder="Your email address"/><button class="nl-btn">Subscribe free →</button></div>
+  <div class="nl-fine">No spam · Unsubscribe anytime · Free forever</div>
+</div>
+<div id="footer-placeholder"></div>
+
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

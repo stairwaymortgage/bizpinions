@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light only"/>
+<title>Search Results | Bizpinions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#00274C;--maize:#FFCB05;--cream:#F8F4EE;--cream2:#F2EDE4;--white:#FFFFFF;--text:#1a1a14;--text2:#3d3825;--text3:#7a7060;--border:#E2DDD4;--green:#1A6B3C;--amber:#C17A10;--red:#A0291A;}
+html{background:#ffffff !important;color-scheme:light only;}
+body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}.nav-logo span{color:var(--maize);}
+.nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.stage-pill.active{background:var(--maize);border-color:var(--maize);}
+.pill-icon{font-size:13px;line-height:1;}.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.stage-pill.active .pill-text{color:var(--navy);}
+
+/* SEARCH HERO */
+.search-hero{background:var(--navy);padding:24px 16px;}
+.search-hero h1{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:14px;line-height:1.3;}
+.search-hero h1 em{color:var(--maize);font-style:normal;}
+.search-bar{display:flex;gap:8px;}
+.search-input{flex:1;padding:13px 16px;border-radius:8px;border:2px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;transition:border-color .15s;}
+.search-input:focus{outline:none;border-color:var(--maize);}
+.search-input::placeholder{color:rgba(255,255,255,0.3);}
+.search-btn{background:var(--maize);color:var(--navy);font-size:14px;font-weight:700;padding:13px 18px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;}
+
+/* FILTER PILLS */
+.filter-wrap{background:var(--cream);padding:12px 16px;border-bottom:1px solid var(--border);}
+.filter-label{font-size:9px;font-weight:700;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.filter-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.filter-pills::-webkit-scrollbar{display:none;}
+.fpill{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:6px 14px;white-space:nowrap;cursor:pointer;font-size:12px;font-weight:600;color:var(--text2);font-family:'Inter',sans-serif;flex-shrink:0;transition:all .15s;}
+.fpill.active{background:var(--navy);border-color:var(--navy);color:var(--white);}
+
+/* RESULTS BAR */
+.results-bar{background:var(--white);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.results-count{font-size:13px;color:var(--text3);}
+.results-count strong{color:var(--navy);font-weight:700;}
+.results-count em{font-style:normal;color:var(--maize);background:var(--navy);padding:1px 8px;border-radius:3px;font-family:'Bebas Neue',sans-serif;font-size:15px;margin:0 4px;}
+
+/* RESULT CARDS */
+.results-wrap{padding:16px;}
+.result-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;transition:box-shadow .15s,border-color .15s;text-decoration:none;display:block;}
+.result-card:hover{box-shadow:0 4px 16px rgba(0,39,76,0.08);border-color:rgba(0,39,76,0.2);}
+.rc-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.rc-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;padding:3px 8px;border-radius:3px;}
+.badge-start{background:#EBF3FB;color:#1B5E9E;}
+.badge-fund{background:#E8F5ED;color:#1A6B3C;}
+.badge-run{background:#F5EEF8;color:#7B3FA0;}
+.badge-buy{background:#FDF6E7;color:#C17A10;}
+.badge-sell{background:#FCECEA;color:#A0291A;}
+.badge-verdict{background:var(--navy);color:var(--maize);}
+.rc-type{font-size:10px;color:var(--text3);}
+.rc-time{font-size:10px;color:var(--text3);}
+.result-card h3{font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:8px;}
+.result-card h3 mark{background:rgba(255,203,5,0.35);color:var(--navy);border-radius:2px;padding:0 2px;}
+.rc-snippet{font-size:13px;color:var(--text2);line-height:1.65;border-left:3px solid var(--maize);padding-left:10px;margin-bottom:8px;}
+.rc-footer{display:flex;align-items:center;justify-content:space-between;}
+.rc-url{font-size:10px;color:var(--text3);}
+.rc-cta{font-size:12px;font-weight:700;color:var(--navy);}
+
+/* NO RESULTS */
+.no-results{padding:40px 16px;text-align:center;}
+.no-results-icon{font-size:48px;margin-bottom:16px;}
+.no-results h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.no-results p{font-size:14px;color:var(--text3);line-height:1.7;margin-bottom:24px;}
+.suggestions{text-align:left;}
+.suggestions-head{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.suggestion-pill{display:inline-block;background:var(--cream);border:1px solid var(--border);border-radius:20px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--navy);margin:0 6px 8px 0;cursor:pointer;}
+
+/* RELATED SEARCHES */
+.related-searches{background:var(--cream2);padding:20px 16px;border-top:1px solid var(--border);}
+.rs-head{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.rs-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.rs-pill{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--navy);cursor:pointer;text-decoration:none;}
+
+/* NEWSLETTER */
+.newsletter{background:var(--navy);padding:28px 16px;}
+.newsletter h2{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.newsletter p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:18px;}
+.newsletter p strong{color:var(--maize);}
+.nl-form{display:flex;flex-direction:column;gap:8px;}
+.nl-input{padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.07);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;}
+.nl-input::placeholder{color:rgba(255,255,255,0.28);}
+.nl-btn{background:var(--maize);color:var(--navy);font-size:15px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.nl-fine{font-size:10px;color:rgba(255,255,255,0.22);text-align:center;margin-top:6px;}
+
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-search{display:flex;gap:8px;margin-bottom:20px;}
+.footer-search input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;background:var(--white);}
+.footer-search button{background:var(--navy);color:var(--white);font-size:12px;font-weight:700;padding:10px 16px;border-radius:6px;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+
+<!-- SEARCH HERO -->
+<div class="search-hero">
+  <h1 id="searchHeading">Search results for <em id="queryDisplay"></em></h1>
+  <div class="search-bar">
+    <input class="search-input" id="mainSearch" type="text" placeholder="Search guides, reviews, comparisons..." onkeydown="if(event.key==='Enter')runSearch()"/>
+    <button class="search-btn" onclick="runSearch()">Search</button>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filter-wrap">
+  <div class="filter-label">Filter results</div>
+  <div class="filter-pills">
+    <div class="fpill active" onclick="filterResults('all',this)">All results</div>
+    <div class="fpill" onclick="filterResults('start',this)">🚀 Start it</div>
+    <div class="fpill" onclick="filterResults('fund',this)">💰 Fund it</div>
+    <div class="fpill" onclick="filterResults('run',this)">⚙️ Run it</div>
+    <div class="fpill" onclick="filterResults('buy',this)">🏪 Buy it</div>
+    <div class="fpill" onclick="filterResults('sell',this)">🏁 Sell it</div>
+    <div class="fpill" onclick="filterResults('verdict',this)">⚖️ The Verdict</div>
+  </div>
+</div>
+
+<div class="results-bar">
+  <span class="results-count" id="resultsCount">Searching...</span>
+</div>
+
+<!-- RESULTS -->
+<div class="results-wrap" id="resultsWrap"></div>
+
+<!-- NO RESULTS (hidden by default) -->
+<div class="no-results" id="noResults" style="display:none;">
+  <div class="no-results-icon">🔍</div>
+  <h2>No results found</h2>
+  <p>We couldn't find anything matching your search. Try different keywords or browse by topic below.</p>
+  <div class="suggestions">
+    <div class="suggestions-head">Try searching for</div>
+    <span class="suggestion-pill" onclick="setSearch('SBA loan')">SBA loan</span>
+    <span class="suggestion-pill" onclick="setSearch('franchise')">Franchise</span>
+    <span class="suggestion-pill" onclick="setSearch('CRM software')">CRM software</span>
+    <span class="suggestion-pill" onclick="setSearch('payroll')">Payroll</span>
+    <span class="suggestion-pill" onclick="setSearch('how to start a business')">How to start a business</span>
+    <span class="suggestion-pill" onclick="setSearch('working capital')">Working capital</span>
+    <span class="suggestion-pill" onclick="setSearch('how to sell a business')">How to sell a business</span>
+    <span class="suggestion-pill" onclick="setSearch('Gusto')">Gusto</span>
+  </div>
+</div>
+
+<!-- RELATED SEARCHES -->
+<div class="related-searches" id="relatedSearches">
+  <div class="rs-head">Popular searches</div>
+  <div class="rs-pills" id="relatedPills"></div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>Didn't find what you need?</h2>
+  <p>Subscribe and get every new guide and review delivered to your inbox. <strong>120 guides covering every stage of business</strong> — and growing every week.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="Your email address"/>
+    <button class="nl-btn">Subscribe free →</button>
+  </div>
+  <div class="nl-fine">No spam · Unsubscribe anytime · Free forever</div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+
+<script>
+// ══════════════════════════════════════════════
+// FULL CONTENT INDEX — all 120 articles
+// Each entry: {title, snippet, pillar, type, time, slug}
+// ══════════════════════════════════════════════
+var CONTENT = [
+  // START IT
+  {title:"LLC vs S-Corp vs sole proprietor: which structure is right for you?",snippet:"For most small businesses starting out, LLC is the right move — simple, flexible, protects personal assets. S-Corp makes sense once you're netting $40k+ and want to reduce self-employment tax.",pillar:"start",type:"Guide",time:"6 min",slug:"bizpinions_start_it.html"},
+  {title:"How to start a business with no money in 2026",snippet:"Service businesses, dropshipping, freelancing, and digital products all require near-zero capital. The real cost is time, not money.",pillar:"start",type:"Guide",time:"7 min",slug:"bizpinions_start_it.html"},
+  {title:"Do you need a business license? Here's the real answer",snippet:"It depends on your state, city, and industry. Most businesses need at least a general business license plus any industry-specific permits.",pillar:"start",type:"Guide",time:"4 min",slug:"bizpinions_start_it.html"},
+  {title:"How to get your EIN from the IRS — step by step",snippet:"Free at IRS.gov. Takes 5 minutes. You get it instantly. You need it before you can open a business bank account or hire employees.",pillar:"start",type:"Guide",time:"3 min",slug:"bizpinions_start_it.html"},
+  {title:"How to open a business bank account: what banks won't tell you",snippet:"Bring your EIN, articles of incorporation, and ID. Never mix personal and business funds — ever. Chase, Bank of America, and Bluevine are the top picks.",pillar:"start",type:"Guide",time:"5 min",slug:"bizpinions_start_it.html"},
+  {title:"The 10 best businesses to start with under $10,000",snippet:"Cleaning, landscaping, pressure washing, mobile detailing, bookkeeping, social media management, tutoring. All proven, all scalable, all under $10k to launch.",pillar:"start",type:"Guide",time:"7 min",slug:"bizpinions_start_it.html"},
+  {title:"How to build business credit from zero",snippet:"Get a business credit card the day you open. Use it for everything. Pay in full monthly. Apply for a Net 30 vendor account with Uline or Grainger. Your business credit score starts building immediately.",pillar:"start",type:"Guide",time:"6 min",slug:"bizpinions_start_it.html"},
+  {title:"What is a business plan and do you really need one?",snippet:"If you're applying for an SBA loan — yes. If you're starting a small service business — a one-pager is enough. Here's exactly how much plan you actually need.",pillar:"start",type:"Guide",time:"4 min",slug:"bizpinions_start_it.html"},
+  {title:"How to start a cleaning business from scratch in 2026",snippet:"$500-2,000 to start. First clients from Nextdoor and Facebook groups. Scale with employees once you have 10+ recurring clients.",pillar:"start",type:"Guide",time:"6 min",slug:"bizpinions_start_it.html"},
+  {title:"How to start an online business: 7 models that work right now",snippet:"Freelancing, digital products, dropshipping, affiliate sites, online courses, SaaS, and agency models. Ranked by startup cost, time to revenue, and ceiling.",pillar:"start",type:"Guide",time:"8 min",slug:"bizpinions_start_it.html"},
+
+  // FUND IT
+  {title:"SBA loan vs conventional loan: which should you choose in 2026?",snippet:"SBA wins for most small businesses — lower down payment, longer terms, rate caps. Go conventional only if you need funds in under 2 weeks.",pillar:"fund",type:"Guide",time:"7 min",slug:"bizpinions_article_template.html"},
+  {title:"How to get a small business loan with bad credit",snippet:"Your options narrow but don't disappear. SBA microloans, CDFIs, and equipment financing are still available below 640.",pillar:"fund",type:"Guide",time:"6 min",slug:"bizpinions_fund_it.html"},
+  {title:"Working capital loans for small business: how to get funded fast",snippet:"Best options: SBA 7(a) line of credit, bank line of credit, or invoice factoring. MCA is almost never the right answer.",pillar:"fund",type:"Guide",time:"5 min",slug:"bizpinions_fund_it.html"},
+  {title:"SBA loan for franchise: everything you need to know",snippet:"SBA 7(a) is the most common franchise financing vehicle. You need 10-20% down, 680+ credit, and an FDD-approved franchise.",pillar:"fund",type:"Guide",time:"8 min",slug:"bizpinions_fund_it.html"},
+  {title:"SBA 7(a) loan explained: the most popular SBA program",snippet:"The SBA 7(a) covers almost any business purpose — working capital, equipment, real estate, acquisitions. Up to $5M, terms up to 25 years.",pillar:"fund",type:"Guide",time:"7 min",slug:"bizpinions_fund_it.html"},
+  {title:"SBA Express loan: how to get fast SBA funding in 36 hours",snippet:"SBA Express caps at $500k but closes in 36 hours vs 30-90 days for standard 7(a). If you need speed without a predatory lender, this is the answer.",pillar:"fund",type:"Guide",time:"5 min",slug:"bizpinions_fund_it.html"},
+  {title:"SBA 504 loan: for real estate and major equipment purchases",snippet:"SBA 504 is specifically for fixed assets — commercial property and heavy equipment. Up to $5.5M, 10% down, 20-25 year terms.",pillar:"fund",type:"Guide",time:"6 min",slug:"bizpinions_fund_it.html"},
+  {title:"Merchant cash advance: what it is and exactly why to avoid it",snippet:"Effective APR regularly hits 100-300%. Daily repayment destroys cash flow. MCA almost never makes more financial sense than alternatives.",pillar:"fund",type:"Guide",time:"5 min",slug:"bizpinions_fund_it.html"},
+  {title:"Startup business funding: every option for new businesses in 2026",snippet:"SBA microloans, CDFIs, equipment financing, angel investors, crowdfunding, ROBS, and home equity. Here's the full menu ranked by cost of capital.",pillar:"fund",type:"Guide",time:"8 min",slug:"bizpinions_fund_it.html"},
+  {title:"SBA loans for women-owned businesses: programs and how to apply",snippet:"Women-owned businesses qualify for standard SBA programs plus WBC resources and some state-level grants. Rates and terms are identical.",pillar:"fund",type:"Guide",time:"6 min",slug:"bizpinions_fund_it.html"},
+  {title:"Business loans for veterans: every program available in 2026",snippet:"SBA Veterans Advantage waives guarantee fees. SBA Express for Veterans caps at $500k with 36-hour turnaround.",pillar:"fund",type:"Guide",time:"6 min",slug:"bizpinions_fund_it.html"},
+  {title:"Small business equipment financing: how to fund your tools and machinery",snippet:"Equipment loans self-secure — the equipment is the collateral. Rates typically 6-9% for strong credit. SBA 504 is best for major equipment over $150k.",pillar:"fund",type:"Guide",time:"5 min",slug:"bizpinions_fund_it.html"},
+  {title:"Invoice factoring explained: turn receivables into cash fast",snippet:"You sell unpaid invoices at a discount (typically 1-5%) for immediate cash. Best for B2B businesses with 30-90 day payment terms.",pillar:"fund",type:"Guide",time:"5 min",slug:"bizpinions_fund_it.html"},
+  {title:"SBA commercial real estate loan: how it works in 2026",snippet:"SBA 504 is purpose-built for commercial real estate — 10% down, 25-year term, below-market fixed rates. You must occupy 51% of the building.",pillar:"fund",type:"Guide",time:"7 min",slug:"bizpinions_fund_it.html"},
+
+  // RUN IT
+  {title:"Best accounting software for small business in 2026 — ranked",snippet:"QuickBooks wins overall. Wave wins on price (free). FreshBooks wins for service businesses that invoice. Pick based on your business type.",pillar:"run",type:"Guide",time:"6 min",slug:"bizpinions_run_it.html"},
+  {title:"How to automate your small business with AI tools in 2026",snippet:"ChatGPT for content and emails. Zapier for workflow automation. HubSpot for CRM. Gusto for payroll. These four tools alone save 10+ hours per week.",pillar:"run",type:"Guide",time:"8 min",slug:"bizpinions_run_it.html"},
+  {title:"How to deal with a cash flow crisis before it kills your business",snippet:"Invoice immediately. Collect faster. Cut non-essential expenses. Get a line of credit before you need it.",pillar:"run",type:"Guide",time:"6 min",slug:"bizpinions_run_it.html"},
+  {title:"How to hire your first employee without making costly mistakes",snippet:"Get your EIN. Set up payroll before day one. Register as an employer with your state. Use Gusto or ADP — never do payroll manually.",pillar:"run",type:"Guide",time:"7 min",slug:"bizpinions_run_it.html"},
+  {title:"Best CRM software for small business owners in 2026 — ranked",snippet:"HubSpot wins for most — free to start, scales well. Pipedrive wins for pure sales pipeline. Zoho wins for deep customization. Salesforce is overkill under 50 employees.",pillar:"run",type:"Guide",time:"7 min",slug:"bizpinions_run_it.html"},
+  {title:"Social media marketing for business owners: what actually works in 2026",snippet:"For most small businesses: Facebook and Instagram for local awareness, Google Business Profile for local search, LinkedIn for B2B.",pillar:"run",type:"Guide",time:"6 min",slug:"bizpinions_run_it.html"},
+  {title:"How to set up payroll for a small business: the complete guide",snippet:"Get your EIN. Register with your state for payroll taxes. Choose Gusto at $40/month for the best value under 50 employees.",pillar:"run",type:"Guide",time:"5 min",slug:"bizpinions_run_it.html"},
+  {title:"Email marketing for small business: beginner to advanced guide",snippet:"Your email list is your most valuable marketing asset. Mailchimp is free to 500 subscribers. Klaviyo is better for ecommerce. ActiveCampaign wins for automation.",pillar:"run",type:"Guide",time:"7 min",slug:"bizpinions_run_it.html"},
+  {title:"Business insurance: what you need and what you don't",snippet:"General liability is non-negotiable. Professional liability if you give advice. Workers comp if you have employees. Next Insurance is the best value for most small businesses.",pillar:"run",type:"Guide",time:"5 min",slug:"bizpinions_run_it.html"},
+  {title:"How to create a business budget that actually holds",snippet:"Zero-based budgeting beats percentage-based for small businesses. Every dollar gets a job. Review weekly not monthly.",pillar:"run",type:"Guide",time:"5 min",slug:"bizpinions_run_it.html"},
+
+  // BUY IT
+  {title:"Is Chick-fil-A franchise worth the investment in 2026?",snippet:"Highest AUV in fast food at $9.3M average. But you don't own it — you operate it. No equity. No resale. $10k application fee.",pillar:"buy",type:"Guide",time:"9 min",slug:"bizpinions_buy_it.html"},
+  {title:"Top 10 fastest growing franchises in 2026 — ranked by actual ROI",snippet:"Home services dominate the list — cleaning, HVAC, pest control. Lower investment, recurring revenue, fragmented competition.",pillar:"buy",type:"Guide",time:"8 min",slug:"bizpinions_buy_it.html"},
+  {title:"McDonald's franchise cost and profit: the real numbers for 2026",snippet:"$500k liquid minimum. Total investment $1M-$2.3M. Average owner-operator nets $150-200k annually on $3.7M in revenue.",pillar:"buy",type:"Guide",time:"8 min",slug:"bizpinions_buy_it.html"},
+  {title:"What is a franchise disclosure document (FDD) and how to read it",snippet:"The FDD has 23 items. Focus on Item 19 (financial performance), Item 20 (outlet counts and closures), and Item 21 (franchisor financials).",pillar:"buy",type:"Guide",time:"7 min",slug:"bizpinions_buy_it.html"},
+  {title:"How to buy an existing business: the complete step-by-step guide",snippet:"Find businesses on BizBuySell or through a broker. LOI first, then due diligence, then purchase agreement. SBA 7(a) is the most common financing.",pillar:"buy",type:"Guide",time:"8 min",slug:"bizpinions_buy_it.html"},
+  {title:"Best franchises under $50,000 to start in 2026 — real numbers only",snippet:"Junk removal, cleaning services, mobile pet grooming, and tutoring all have strong franchise options under $50k.",pillar:"buy",type:"Guide",time:"7 min",slug:"bizpinions_buy_it.html"},
+  {title:"Is Amway still worth joining in 2026? We looked at the real income data",snippet:"73% of Amway IBOs reported zero profit last year. The income disclosure says average active IBO earned $766/year before expenses.",pillar:"buy",type:"Guide",time:"6 min",slug:"bizpinions_buy_it.html"},
+  {title:"Subway franchise review: pros, cons, and real owner opinions",snippet:"Low entry cost ($150k-$300k) but high royalty (8%) and intense competition. Many locations struggle with profitability.",pillar:"buy",type:"Guide",time:"7 min",slug:"bizpinions_buy_it.html"},
+  {title:"How to do due diligence before buying any business — complete guide",snippet:"Verify 3 years of financials. Talk to customers independently. Check for liens, lawsuits, and tax issues. Understand why they're selling.",pillar:"buy",type:"Guide",time:"9 min",slug:"bizpinions_buy_it.html"},
+  {title:"MLM vs franchise: the honest comparison nobody gives you",snippet:"Franchises offer real business ownership with proven systems. MLMs offer income potential that statistically very few achieve.",pillar:"buy",type:"Guide",time:"6 min",slug:"bizpinions_buy_it.html"},
+
+  // SELL IT
+  {title:"How to value a small business: the three methods that actually matter",snippet:"SDE multiple is most common for businesses under $5M. EBITDA multiple for larger businesses. Most small businesses sell for 2-4x SDE.",pillar:"sell",type:"Guide",time:"7 min",slug:"bizpinions_sell_it.html"},
+  {title:"EBITDA vs SDE: which multiple to use to price your business",snippet:"Use SDE for businesses under $1M in earnings where the owner works in the business. Use EBITDA for larger businesses with a management team.",pillar:"sell",type:"Guide",time:"5 min",slug:"bizpinions_sell_it.html"},
+  {title:"Business exit strategies: which one is right for your situation?",snippet:"Strategic sale, financial buyer, ESOP, family transfer, or seller financing — each has different tax implications and timelines.",pillar:"sell",type:"Guide",time:"6 min",slug:"bizpinions_sell_it.html"},
+  {title:"How to prepare your business for sale 2 years in advance",snippet:"Clean up your financials. Reduce owner dependence. Diversify your customer base. Lock in key employees. Resolve all legal issues.",pillar:"sell",type:"Guide",time:"7 min",slug:"bizpinions_sell_it.html"},
+  {title:"How to sell a business without a broker",snippet:"BizBuySell, BizQuest, and direct outreach to competitors. A broker takes 8-12% on deals under $1M. Selling direct often makes more financial sense.",pillar:"sell",type:"Guide",time:"6 min",slug:"bizpinions_sell_it.html"},
+  {title:"How much is my business worth? Use this formula",snippet:"SDE x industry multiple. To get SDE: net profit + owner salary + depreciation + amortization + one-time expenses. Industry multiples range from 1.5x to 4x+.",pillar:"sell",type:"Guide",time:"5 min",slug:"bizpinions_sell_it.html"},
+  {title:"How taxes work when you sell a business — what sellers always get wrong",snippet:"Asset sale vs stock sale has massive tax implications. Capital gains rates apply to most proceeds. Installment sales spread the tax bill.",pillar:"sell",type:"Guide",time:"8 min",slug:"bizpinions_sell_it.html"},
+  {title:"Seller financing explained: how to sell and get paid over time",snippet:"Offering 10-30% seller financing increases your buyer pool dramatically and can increase your sale price 10-20%.",pillar:"sell",type:"Guide",time:"5 min",slug:"bizpinions_sell_it.html"},
+  {title:"Asset sale vs stock sale: the difference that costs sellers money",snippet:"Buyers almost always prefer asset sales — they get a step-up in basis and avoid inherited liabilities. Sellers often prefer stock sales for tax reasons.",pillar:"sell",type:"Guide",time:"5 min",slug:"bizpinions_sell_it.html"},
+  {title:"Best marketplaces to list a business for sale in 2026",snippet:"BizBuySell leads for volume. Acquire.com dominates for online businesses. Axial is best for middle market ($1M-$50M).",pillar:"sell",type:"Guide",time:"5 min",slug:"bizpinions_sell_it.html"},
+
+  // THE VERDICT
+  {title:"Gusto review 2026: is it actually worth $40/month for small business?",snippet:"Yes — Gusto is worth $40/month for most small businesses. Automated tax filings alone save 4-5 hours per quarter. Score: 9.2/10.",pillar:"verdict",type:"Review",time:"8 min",slug:"bizpinions_verdict_article_template.html"},
+  {title:"Gusto vs Rippling: which payroll platform is worth it?",snippet:"Gusto wins for businesses under 100 employees. Rippling only makes sense if you need deep HR software integrations across your whole stack.",pillar:"verdict",type:"Comparison",time:"8 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"HubSpot vs Salesforce: which CRM actually wins for small business?",snippet:"HubSpot wins for most small businesses under 50 employees. Salesforce is overbuilt, overpriced, and requires a consultant to set up properly.",pillar:"verdict",type:"Comparison",time:"12 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"QuickBooks vs FreshBooks vs Wave: which wins for small business?",snippet:"QuickBooks wins on features. Wave wins on price (free). FreshBooks is best for service businesses that invoice clients regularly.",pillar:"verdict",type:"Comparison",time:"6 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"Merchant cash advances: why you should almost never use one",snippet:"Effective APR often exceeds 100-300%. Almost never worth it. We cover the rare cases where it makes sense. Score: 2.1/10.",pillar:"verdict",type:"Warning",time:"5 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"Best CRM for mortgage loan officers in 2026 — ranked by actual users",snippet:"HubSpot wins for most loan officers — free to start, scales well, integrates with email and calendar without a setup fee.",pillar:"verdict",type:"Best of",time:"10 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"Birdeye vs Podium: honest take for mortgage and lending companies",snippet:"Podium edges Birdeye for mortgage companies because of its SMS-first approach. Birdeye is better for multi-location retail.",pillar:"verdict",type:"Comparison",time:"7 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"McDonald's franchise review: worth the investment in 2026?",snippet:"Strong brand, real ownership, average net $150-200k/year. You need $500k liquid minimum. Total investment $1M-$2.3M.",pillar:"verdict",type:"Review",time:"8 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"Best SBA lenders for small business in 2026 — ranked and reviewed",snippet:"Live Oak Bank leads for pure SBA volume and speed. Huntington is best for Midwest borrowers. Avoid any lender charging origination fees above 3%.",pillar:"verdict",type:"Best of",time:"11 min",slug:"bizpinions_verdict_hub.html"},
+  {title:"Best payroll software for small business in 2026 — ranked",snippet:"Gusto wins for most businesses under 100 employees. ADP is better near 100+ employees. Wave Payroll wins on price. Skip Paychex for small business.",pillar:"verdict",type:"Best of",time:"9 min",slug:"bizpinions_verdict_hub.html"}
+];
+
+var RELATED = ["SBA loan","franchise reviews","best CRM software","payroll software","how to start a business","working capital loans","how to sell a business","business valuation","Gusto review","QuickBooks vs FreshBooks","Chick-fil-A franchise","SBA 7a loan","merchant cash advance","business exit strategy","how to buy a franchise"];
+
+var currentFilter = 'all';
+var currentQuery = '';
+
+function getQueryParam(name){
+  var url = window.location.href;
+  var regex = new RegExp('[?&]'+name+'=([^&#]*)');
+  var results = regex.exec(url);
+  return results ? decodeURIComponent(results[1].replace(/\+/g,' ')) : '';
+}
+
+function setSearch(q){
+  document.getElementById('mainSearch').value = q;
+  runSearch();
+}
+
+function runSearch(){
+  var q = document.getElementById('mainSearch').value.trim();
+  if(!q) return;
+  currentQuery = q;
+  // Update URL
+  var newUrl = window.location.pathname + '?q=' + encodeURIComponent(q);
+  history.pushState(null,'',newUrl);
+  displayResults(q, currentFilter);
+}
+
+function filterResults(f, el){
+  currentFilter = f;
+  document.querySelectorAll('.fpill').forEach(function(p){p.classList.remove('active');});
+  el.classList.add('active');
+  displayResults(currentQuery, f);
+}
+
+function highlight(text, query){
+  if(!query) return text;
+  var words = query.toLowerCase().split(' ').filter(function(w){return w.length > 2;});
+  var result = text;
+  words.forEach(function(word){
+    var regex = new RegExp('('+word+')', 'gi');
+    result = result.replace(regex, '<mark>$1</mark>');
+  });
+  return result;
+}
+
+function getBadgeClass(pillar){
+  return 'badge-'+pillar;
+}
+function getPillarLabel(pillar){
+  var labels = {start:'🚀 Start it',fund:'💰 Fund it',run:'⚙️ Run it',buy:'🏪 Buy it',sell:'🏁 Sell it',verdict:'⚖️ The Verdict'};
+  return labels[pillar] || pillar;
+}
+function getTypeStyle(type){
+  if(type==='Review') return 'background:#E8F5ED;color:#1A6B3C;';
+  if(type==='Warning') return 'background:#FCECEA;color:#A0291A;';
+  if(type==='Comparison') return 'background:#F5EEF8;color:#7B3FA0;';
+  if(type==='Best of') return 'background:#EEF2F8;color:#00274C;';
+  return 'background:#F8F4EE;color:#7a7060;';
+}
+
+function displayResults(query, filter){
+  var q = query.toLowerCase();
+  var wrap = document.getElementById('resultsWrap');
+  var noRes = document.getElementById('noResults');
+  var countEl = document.getElementById('resultsCount');
+  var heading = document.getElementById('searchHeading');
+  var queryDisplay = document.getElementById('queryDisplay');
+
+  queryDisplay.textContent = '"' + query + '"';
+  document.getElementById('mainSearch').value = query;
+
+  // Filter
+  var results = CONTENT.filter(function(item){
+    var matchQuery = !q || item.title.toLowerCase().includes(q) || item.snippet.toLowerCase().includes(q);
+    var matchFilter = filter === 'all' || item.pillar === filter;
+    return matchQuery && matchFilter;
+  });
+
+  // Rank — title matches rank higher
+  results.sort(function(a,b){
+    var aTitle = a.title.toLowerCase().includes(q) ? 1 : 0;
+    var bTitle = b.title.toLowerCase().includes(q) ? 1 : 0;
+    return bTitle - aTitle;
+  });
+
+  wrap.innerHTML = '';
+
+  if(results.length === 0){
+    noRes.style.display = 'block';
+    countEl.innerHTML = '<strong>0</strong> results for <em style="font-style:normal;font-weight:600;">"' + query + '"</em>';
+  } else {
+    noRes.style.display = 'none';
+    countEl.innerHTML = '<strong>' + results.length + '</strong> results for <em style="font-style:normal;background:var(--navy);color:var(--maize);padding:1px 8px;border-radius:3px;font-family:\'Bebas Neue\',sans-serif;font-size:15px;margin:0 4px;">' + query + '</em>';
+
+    results.forEach(function(item){
+      var card = document.createElement('a');
+      card.className = 'result-card';
+      card.href = item.slug;
+      card.innerHTML =
+        '<div class="rc-top">' +
+          '<span class="rc-badge '+getBadgeClass(item.pillar)+'">'+getPillarLabel(item.pillar)+'</span>' +
+          '<span class="rc-badge" style="'+getTypeStyle(item.type)+'">'+item.type+'</span>' +
+          '<span class="rc-time">'+item.time+' read</span>' +
+        '</div>' +
+        '<h3>'+highlight(item.title, query)+'</h3>' +
+        '<div class="rc-snippet">'+highlight(item.snippet, query)+'</div>' +
+        '<div class="rc-footer">' +
+          '<span class="rc-url">bizpinions.com</span>' +
+          '<span class="rc-cta">Read now →</span>' +
+        '</div>';
+      wrap.appendChild(card);
+    });
+  }
+
+  // Related searches
+  var relWrap = document.getElementById('relatedPills');
+  relWrap.innerHTML = '';
+  var shown = RELATED.filter(function(r){ return r.toLowerCase() !== q; }).slice(0,8);
+  shown.forEach(function(r){
+    var pill = document.createElement('a');
+    pill.className = 'rs-pill';
+    pill.href = '#';
+    pill.textContent = r;
+    pill.onclick = function(e){ e.preventDefault(); setSearch(r); };
+    relWrap.appendChild(pill);
+  });
+}
+
+// On load — check URL for query param
+window.addEventListener('DOMContentLoaded', function(){
+  var q = getQueryParam('q');
+  if(q){
+    displayResults(q, 'all');
+  } else {
+    // Show popular searches by default
+    document.getElementById('searchHeading').innerHTML = 'Search <em>120 guides and reviews</em>';
+    document.getElementById('resultsCount').innerHTML = 'Enter a search term above';
+    document.getElementById('noResults').style.display = 'none';
+    // Populate related pills
+    var relWrap = document.getElementById('relatedPills');
+    RELATED.slice(0,10).forEach(function(r){
+      var pill = document.createElement('a');
+      pill.className = 'rs-pill';
+      pill.href = '#';
+      pill.textContent = r;
+      pill.onclick = function(e){ e.preventDefault(); setSearch(r); };
+      relWrap.appendChild(pill);
+    });
+  }
+  // Focus search input
+  document.getElementById('mainSearch').focus();
+});
+</script>
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

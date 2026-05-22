@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light only"/>
+<title>Run it — Operations & Tools | Bizpinions</title>
+<meta name="description" content="Operations, hiring, marketing, and how-to guides that keep your business running."/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<style>
+.pillar-hero{background:#7B3FA0;}
+.search-input:focus{border-color:#7B3FA0;}
+.fpill.active{background:#7B3FA0;border-color:#7B3FA0;color:#fff;}
+.acat{background:#7B3FA022;color:#7B3FA0;}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="pillar-hero">
+  <div class="ph-eyebrow">⚙️ Run it</div>
+  <div class="ph-title">Operate smarter,<br><em>grow faster.</em></div>
+  <p class="ph-desc">Operations, hiring, marketing, software, and how-to guides that keep your business running without running you into the ground.</p>
+  <div class="ebook-card">
+    <div class="ebook-eye">Free guide — ⚙️ run-it series</div>
+    <div class="ebook-title">The Small Business Toolkit</div>
+    <div class="ebook-desc">10 tools that run your business on autopilot — accounting, CRM, payroll, marketing and more.</div>
+    <div class="ebook-meta">10 pages · PDF · Free instant download</div>
+    <input class="ebook-email" type="email" placeholder="Your email address"/>
+    <button class="ebook-btn">Download free toolkit →</button>
+    <div class="ebook-fine">Instant download · No spam · Unsubscribe anytime</div>
+  </div>
+</div>
+
+<div style="background:#F8F4EE;padding:16px;border-bottom:1px solid #E2DDD4;">
+  <div style="display:flex;gap:8px;margin-bottom:10px;">
+    <input class="search-input" id="pillarSearch" type="text" placeholder="Search this section..." style="flex:1;padding:10px 14px;border-radius:7px;border:1.5px solid #E2DDD4;background:#fff;font-size:14px;font-family:Inter,sans-serif;"/>
+    <button class="search-btn">Search</button>
+  </div>
+  <div class="filter-pills">
+    <div class="fpill active" data-cat="all">All</div>
+    <div class="fpill" data-cat="software">Software</div>
+    <div class="fpill" data-cat="hiring">Hiring</div>
+    <div class="fpill" data-cat="marketing">Marketing</div>
+    <div class="fpill" data-cat="finance">Finance</div>
+    <div class="fpill" data-cat="operations">Operations</div>
+  </div>
+</div>
+
+<div style="background:#fff;padding:10px 16px;border-bottom:1px solid #E2DDD4;">
+  <span style="font-size:12px;color:#7a7060;">Showing <strong id="resultCount">10</strong> guides</span>
+</div>
+
+<div style="padding:16px;" id="articleGrid">
+    <div class="acard" data-cat="software" data-title="best accounting software for small business in 2026 — ranked" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Software</span>
+      <span style="font-size:10px;color:#7a7060;">6 min</span>
+      <span style="font-size:10px;font-weight:700;color:#C17A10;">🔥 Most read</span>
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">Best accounting software for small business in 2026 — ranked</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="software" data-title="how to automate your small business with ai tools in 2026" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Software</span>
+      <span style="font-size:10px;color:#7a7060;">8 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">How to automate your small business with AI tools in 2026</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="finance" data-title="how to deal with a cash flow crisis before it kills your business" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Finance</span>
+      <span style="font-size:10px;color:#7a7060;">6 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">How to deal with a cash flow crisis before it kills your business</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="hiring" data-title="how to hire your first employee without making costly mistakes" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Hiring</span>
+      <span style="font-size:10px;color:#7a7060;">7 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">How to hire your first employee without making costly mistakes</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="software" data-title="best crm software for small business owners in 2026 — ranked" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Software</span>
+      <span style="font-size:10px;color:#7a7060;">7 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">Best CRM software for small business owners in 2026 — ranked</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="marketing" data-title="social media marketing for business owners: what actually works" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Marketing</span>
+      <span style="font-size:10px;color:#7a7060;">6 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">Social media marketing for business owners: what actually works</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="operations" data-title="how to set up payroll for a small business: the complete guide" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Operations</span>
+      <span style="font-size:10px;color:#7a7060;">5 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">How to set up payroll for a small business: the complete guide</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="marketing" data-title="email marketing for small business: beginner to advanced guide" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Marketing</span>
+      <span style="font-size:10px;color:#7a7060;">7 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">Email marketing for small business: beginner to advanced guide</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="operations" data-title="business insurance: what you need and what you don't" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Operations</span>
+      <span style="font-size:10px;color:#7a7060;">5 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">Business insurance: what you need and what you don't</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+  <div class="acard" data-cat="finance" data-title="how to create a business budget that actually holds" style="background:#fff;border:1px solid #E2DDD4;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="acat" style="font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:3px;">Finance</span>
+      <span style="font-size:10px;color:#7a7060;">5 min</span>
+      
+    </div>
+    <h3 style="font-family:Lora,serif;font-size:15px;font-weight:700;color:#00274C;line-height:1.4;margin-bottom:8px;">How to create a business budget that actually holds</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:10px;color:#7a7060;">Updated March 2026</span>
+      <span style="font-size:12px;font-weight:700;color:#00274C;">Read now →</span>
+    </div>
+  </div>
+</div>
+
+<div class="bbc">
+  <h2>Need working capital?</h2>
+  <p>Bizpinions is editorially independent — but our advertising partner <strong>Blackburn Business Capital</strong> specializes in SBA loans, franchise financing, and commercial lending.</p>
+  <div class="bbc-box">
+    <div class="bbc-eye">Blackburn Business Capital</div>
+    <h3>Get the capital your business deserves</h3>
+    <p>SBA loans · Franchise financing · Working capital · Commercial lending.</p>
+    <button class="bbc-btn">Apply for financing →</button>
+  </div>
+</div>
+
+<div class="newsletter">
+  <h2>Run it newsletter.</h2>
+  <p>Every week: <strong>software reviews, operations tips, and tools</strong> for business owners who want to run leaner. Free forever.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="Your email address"/>
+    <button class="nl-btn">Subscribe free →</button>
+  </div>
+  <div class="nl-fine">No spam · Unsubscribe anytime · Free forever</div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+<script>document.addEventListener('DOMContentLoaded', initFilters);</script>
+</body>
+</html>

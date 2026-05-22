@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/start-it", "destination": "/start-it.html" },
+    { "source": "/fund-it", "destination": "/fund-it.html" },
+    { "source": "/run-it", "destination": "/run-it.html" },
+    { "source": "/buy-it", "destination": "/buy-it.html" },
+    { "source": "/sell-it", "destination": "/sell-it.html" },
+    { "source": "/the-verdict", "destination": "/the-verdict.html" },
+    { "source": "/browse-all", "destination": "/browse-all.html" },
+    { "source": "/search", "destination": "/search.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/how-we-review", "destination": "/how-we-review.html" },
+    { "source": "/newsletter", "destination": "/newsletter.html" },
+    { "source": "/advertise", "destination": "/advertise.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/sba-loan-vs-conventional-loan", "destination": "/sba-loan-vs-conventional-loan.html" },
+    { "source": "/gusto-review", "destination": "/gusto-review.html" }
+  ]
+}

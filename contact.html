@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="color-scheme" content="light only"/>
+<title>Contact — Bizpinions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#00274C;--maize:#FFCB05;--cream:#F8F4EE;--cream2:#F2EDE4;--white:#FFFFFF;--text:#1a1a14;--text2:#3d3825;--text3:#7a7060;--border:#E2DDD4;--green:#1A6B3C;--amber:#C17A10;}
+html{background:#ffffff !important;color-scheme:light only;}
+body{background:#ffffff !important;font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;}
+.nav{background:var(--white);border-bottom:2px solid var(--navy);position:sticky;top:0;z-index:100;padding:0 16px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--navy);line-height:1;}.nav-logo span{color:var(--maize);}
+.nav-tagline{font-family:'Lora',serif;font-size:10px;font-style:italic;color:var(--text3);margin-top:-1px;display:block;}
+.nav-subscribe{background:var(--navy);color:var(--white);font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.stage-strip{background:var(--navy);padding:10px 16px 12px;border-bottom:3px solid var(--maize);position:sticky;top:54px;z-index:99;}
+.stage-strip-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.stage-pills{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.stage-pills::-webkit-scrollbar{display:none;}
+.stage-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 13px;white-space:nowrap;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.pill-icon{font-size:13px;line-height:1;}.pill-text{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);font-family:'Inter',sans-serif;}
+.hero{background:var(--navy);padding:32px 20px 28px;}
+.hero-eye{display:inline-block;background:var(--maize);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:14px;}
+.hero h1{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 em{color:var(--maize);font-style:italic;}
+.hero p{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;}
+.body{padding:28px 20px;}
+.body h2{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--navy);margin:24px 0 12px;}
+.body p{font-size:15px;color:var(--text);line-height:1.82;margin-bottom:16px;}
+/* REASON CARDS */
+.reason-cards{display:flex;flex-direction:column;gap:10px;margin:16px 0 28px;}
+.reason-card{background:var(--cream);border-radius:10px;padding:16px;cursor:pointer;border:2px solid transparent;transition:border-color .15s;}
+.reason-card.selected{border-color:var(--navy);}
+.rc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.rc-icon{font-size:20px;}
+.rc-title{font-size:14px;font-weight:700;color:var(--navy);}
+.rc-desc{font-size:12px;color:var(--text2);line-height:1.55;}
+/* FORM */
+.contact-form{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.8px;}
+.form-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);}
+.form-input:focus{outline:none;border-color:var(--navy);}
+.form-select{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);-webkit-appearance:none;}
+.form-textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);height:120px;resize:vertical;}
+.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--navy);}
+.form-submit{width:100%;background:var(--navy);color:var(--white);font-size:15px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;margin-top:4px;}
+.form-fine{font-size:11px;color:var(--text3);text-align:center;margin-top:8px;}
+/* QUICK LINKS */
+.quick-links{margin-top:28px;}
+.ql-head{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.ql-card{display:flex;align-items:center;gap:12px;background:var(--cream);border-radius:8px;padding:14px;margin-bottom:10px;text-decoration:none;}
+.ql-icon{font-size:20px;flex-shrink:0;}
+.ql-text h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.ql-text p{font-size:12px;color:var(--text3);}
+.ql-arrow{margin-left:auto;font-size:16px;color:var(--maize);font-weight:700;}
+footer{background:var(--cream);border-top:2px solid var(--navy);padding:28px 16px 24px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--navy);margin-bottom:2px;}.footer-logo span{color:var(--maize);}
+.footer-tagline{font-family:'Lora',serif;font-size:11px;font-style:italic;color:var(--text3);margin-bottom:14px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:7px;}
+.footer-bottom{padding-top:14px;border-top:1px solid var(--border);}
+.footer-bottom p{font-size:11px;color:var(--text3);margin-bottom:5px;}
+.footer-sign{font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--navy);}
+/* SUCCESS */
+.success-msg{display:none;background:#E8F5ED;border:1px solid #1A6B3C;border-radius:8px;padding:16px;text-align:center;margin-top:12px;}
+.success-msg h3{font-family:'Lora',serif;font-size:17px;font-weight:700;color:#1A6B3C;margin-bottom:6px;}
+.success-msg p{font-size:13px;color:#1A6B3C;}
+</style>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="hero">
+  <div class="hero-eye">Contact</div>
+  <h1>Get in touch.<br><em>We respond fast.</em></h1>
+  <p>Questions, advertising inquiries, review suggestions, or anything else — we respond to every message within 1 business day.</p>
+</div>
+<div class="body">
+  <h2>What can we help with?</h2>
+  <div class="reason-cards">
+    <div class="reason-card" onclick="selectReason(this,'Advertising inquiry')"><div class="rc-head"><span class="rc-icon">📌</span><span class="rc-title">Advertising & sponsored placements</span></div><div class="rc-desc">Interested in placing your product or service on Bizpinions.</div></div>
+    <div class="reason-card" onclick="selectReason(this,'Review suggestion')"><div class="rc-head"><span class="rc-icon">⚖️</span><span class="rc-title">Suggest a review</span></div><div class="rc-desc">Know a software, franchise, or vendor we should cover?</div></div>
+    <div class="reason-card" onclick="selectReason(this,'Content correction')"><div class="rc-head"><span class="rc-icon">✏️</span><span class="rc-title">Correction or update</span></div><div class="rc-desc">Found something inaccurate or outdated in one of our guides?</div></div>
+    <div class="reason-card" onclick="selectReason(this,'General question')"><div class="rc-head"><span class="rc-icon">💬</span><span class="rc-title">General question</span></div><div class="rc-desc">Anything else — we're happy to help.</div></div>
+  </div>
+
+  <div class="contact-form">
+    <div class="form-group">
+      <label class="form-label">Your name</label>
+      <input class="form-input" type="text" placeholder="First and last name"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email address</label>
+      <input class="form-input" type="email" placeholder="you@company.com"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Subject</label>
+      <select class="form-select" id="subjectSelect">
+        <option value="">Select a subject...</option>
+        <option>Advertising inquiry</option>
+        <option>Sponsored placement</option>
+        <option>Review suggestion</option>
+        <option>Content correction</option>
+        <option>Newsletter question</option>
+        <option>General question</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" placeholder="Tell us what's on your mind..."></textarea>
+    </div>
+    <button class="form-submit" onclick="submitForm()">Send message →</button>
+    <div class="form-fine">We respond within 1 business day · No spam back, ever</div>
+    <div class="success-msg" id="successMsg">
+      <h3>Message sent! ✓</h3>
+      <p>We'll get back to you within 1 business day.</p>
+    </div>
+  </div>
+
+  <div class="quick-links">
+    <div class="ql-head">Or go directly to</div>
+    <a href="/advertise" class="ql-card"><span class="ql-icon">📌</span><div class="ql-text"><h4>Advertise on Bizpinions</h4><p>See placement options and rates</p></div><span class="ql-arrow">→</span></a>
+    <a href="/how-we-review" class="ql-card"><span class="ql-icon">⚖️</span><div class="ql-text"><h4>How we review</h4><p>Our scoring methodology and disclosure policy</p></div><span class="ql-arrow">→</span></a>
+    <a href="/newsletter" class="ql-card"><span class="ql-icon">📬</span><div class="ql-text"><h4>Newsletter</h4><p>Subscribe to our weekly email</p></div><span class="ql-arrow">→</span></a>
+    <a href="/about" class="ql-card"><span class="ql-icon">ℹ️</span><div class="ql-text"><h4>About Bizpinions</h4><p>Who we are and how we work</p></div><span class="ql-arrow">→</span></a>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+
+<script>
+function selectReason(el, reason){
+  document.querySelectorAll('.reason-card').forEach(function(c){c.classList.remove('selected');});
+  el.classList.add('selected');
+  document.getElementById('subjectSelect').value = reason;
+}
+function submitForm(){
+  document.getElementById('successMsg').style.display = 'block';
+  document.querySelector('.form-submit').textContent = 'Message sent ✓';
+  document.querySelector('.form-submit').style.background = '#1A6B3C';
+}
+</script>
+<script src="/js/components.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
