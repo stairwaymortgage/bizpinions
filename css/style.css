@@ -651,7 +651,7 @@ body{background:#ffffff !important;font-family:'Inter',sans-serif;color:#1a1a14;
   .bbc{padding:40px;}
   .site-footer{padding:48px 40px 28px;}
   .footer-links-grid{grid-template-columns:repeat(4,1fr);}
-  .hero{padding:56px 40px;display:grid;grid-template-columns:1fr 400px;gap:56px;align-items:center;}
+  .hero{padding:56px 40px;display:block;align-items:center;}
   .hero h1{font-size:44px;}
   .btn-primary,.btn-secondary{display:inline-block;width:auto;margin-right:10px;}
   .body{padding:40px;}
