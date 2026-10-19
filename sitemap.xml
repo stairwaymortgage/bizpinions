@@ -1,99 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://bizpinions.vercel.app/</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/about</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/advertise</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/browse-all</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/buy-it</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/contact</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/fund-it</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/gusto-review</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/how-we-review</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/newsletter</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/run-it</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/sba-loan-vs-conventional-loan</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/search</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/sell-it</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/start-it</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bizpinions.vercel.app/the-verdict</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+<loc>https://bizpinions.com/</loc>
+<lastmod>2026-10-16T21:53:02+00:00</lastmod>
+<priority>1.0000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/the-verdict</loc>
+<lastmod>2026-10-16T21:53:02+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/browse-all</loc>
+<lastmod>2026-10-19T16:36:16+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/start-it</loc>
+<lastmod>2026-10-16T21:53:02+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/fund-it</loc>
+<lastmod>2026-10-16T21:53:02+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/run-it</loc>
+<lastmod>2026-10-16T21:53:02+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/buy-it</loc>
+<lastmod>2026-10-16T21:53:02+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/sell-it</loc>
+<lastmod>2026-10-16T21:53:02+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/sba-loan-vs-conventional-loan</loc>
+<lastmod>2026-10-19T16:36:16+00:00</lastmod>
+<priority>0.8000</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/newsletter</loc>
+<lastmod>2026-10-19T16:36:16+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/about</loc>
+<lastmod>2026-10-19T16:36:16+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/how-we-review</loc>
+<lastmod>2026-10-19T16:36:16+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/advertise</loc>
+<lastmod>2026-10-19T16:36:16+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://bizpinions.com/contact</loc>
+<lastmod>2026-10-19T16:36:16+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
 </urlset>
